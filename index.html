@@ -1,0 +1,1795 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zaptex | Soluções Têxteis Personalizadas</title>
+  <meta name="description" content="Zaptex - Soluções têxteis personalizadas para empresas, eventos, igrejas, atléticas e muito mais." />
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Ubuntu:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{fontFamily:{brand:['Ubuntu','Poppins','ui-sans-serif','system-ui'],sans:['Poppins','ui-sans-serif','system-ui']},colors:{brand:{blue:'#1b26c4'}}}}};</script>
+  <style>
+    :root{--brand:#1b26c4;--brand-grad:linear-gradient(135deg,#1b26c4 0%,#2563eb 60%,#1b26c4 100%);--bg:#f5f7fa;}
+    *{box-sizing:border-box;}html,body{margin:0;padding:0;background:var(--bg);font-family:Poppins,system-ui,sans-serif;color:#1d2730;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+    img{display:block;height:auto;}a{text-decoration:none;}
+    .container-max{max-width:1280px;margin:0 auto;padding:0 1.25rem;width:100%;}
+    .btn{display:inline-flex;align-items:center;justify-content:center;font-weight:600;border-radius:.8rem;padding:.85rem 1.4rem;font-size:.875rem;line-height:1;transition:.3s;background:#e3e8ef;color:#1d2730;}
+    .btn-primary{background:var(--brand-grad);color:#fff;box-shadow:0 8px 26px -6px rgba(27,38,196,.45);transition:all .3s ease;position:relative;overflow:hidden;} 
+    .btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 30px -6px rgba(27,38,196,.4), 0 0 20px rgba(27,38,196,.2);animation:btnGlow 1.5s ease-in-out infinite alternate;}
+    .btn-primary::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);transition:left .6s ease;}
+    .btn-primary:hover::before{left:100%;}
+    .btn-outline{background:transparent;border:2px solid rgba(255,255,255,.55);color:#fff;backdrop-filter:blur(8px);} .btn-outline:hover{background:rgba(255,255,255,.15);}
+    .section{padding:5rem 0;position:relative;box-shadow:0 2px 15px -3px rgba(0,0,0,.08),0 1px 6px -2px rgba(0,0,0,.05);} .section-title{font:700 clamp(2rem,5vw,2.6rem)/1.15 Ubuntu,system-ui;letter-spacing:.5px;margin:0 0 2.2rem;color:#142033;}
+  /* Hero animation reajustada para evitar corte em telas largas (menos translate para cima) */
+  @keyframes kenBurnsHero{0%{transform:scale(1.02) translateY(0);}50%{transform:scale(1.06) translateY(-1%);}100%{transform:scale(1.09) translateY(-1.2%);} }
+    @keyframes fadeUp{0%{opacity:0;transform:translateY(28px);}100%{opacity:1;transform:translateY(0);}}
+    @keyframes pulseDot{0%,100%{opacity:.5}50%{opacity:1}}
+    .hero{min-height:90vh;display:flex;align-items:center;position:relative;overflow:hidden;}
+  .hero__bg{position:absolute;top:-6%;left:0;right:0;bottom:-10%;background:url('./assets/images/hero-section-banner.png') center/cover no-repeat;will-change:transform;filter:brightness(.9) contrast(1.05) saturate(1.05);transform-origin:center center;}
+  @media (min-width:1600px){.hero__bg{top:-8%;bottom:-14%;}}
+    .hero__overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.75));}
+    
+    /* Transição integrada entre hero e próxima seção */
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 120px;
+      background: linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.05) 40%, rgba(255, 255, 255, 0.4) 80%, #f5f7fa 100%);
+      z-index: 3;
+      pointer-events: none;
+    }
+    
+    /* Elementos flutuantes para transição */
+    .hero::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 200px;
+      background-image: 
+        radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.3), transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.2), transparent),
+        radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.4), transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.2), transparent);
+      background-repeat: repeat;
+      background-size: 150px 150px;
+      animation: floatingParticles 20s infinite linear;
+      z-index: 2;
+      opacity: 0.6;
+      pointer-events: none;
+    }
+    
+    @keyframes floatingParticles {
+      0% { transform: translateY(0px) translateX(0px); }
+      25% { transform: translateY(-20px) translateX(10px); }
+      50% { transform: translateY(-10px) translateX(-5px); }
+      75% { transform: translateY(-30px) translateX(8px); }
+      100% { transform: translateY(0px) translateX(0px); }
+    }
+    
+    /* Overlap da seção sobre */
+    .sobre-section {
+      margin-top: -40px;
+      position: relative;
+      z-index: 4;
+      background: linear-gradient(180deg, transparent 0%, #ffffff 20px);
+      padding-top: 80px;
+    }
+    
+    /* Efeitos de reveal para integração suave */
+    .reveal-element {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .reveal-element.reveal-active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Delays escalonados para efeito cascata */
+    .reveal-element:nth-child(1) { transition-delay: 0.1s; }
+    .reveal-element:nth-child(2) { transition-delay: 0.2s; }
+    .reveal-element:nth-child(3) { transition-delay: 0.3s; }
+    .reveal-element:nth-child(4) { transition-delay: 0.4s; }
+    .reveal-element:nth-child(5) { transition-delay: 0.5s; }
+    
+    /* Efeito especial para o badge */
+    .sobre-badge.reveal-element {
+      transform: translateY(20px) scale(0.9);
+    }
+    
+    .sobre-badge.reveal-active {
+      transform: translateY(0) scale(1);
+    }
+    
+    /* Efeito para o título com gradiente */
+    .sobre-heading.reveal-element {
+      transform: translateY(40px);
+      filter: blur(2px);
+    }
+    
+    .sobre-heading.reveal-active {
+      transform: translateY(0);
+      filter: blur(0px);
+    }
+    
+    /* === TRANSIÇÕES INTEGRADAS ENTRE SEÇÕES === */
+    
+    /* Transição Sobre → Produtos: Onda diagonal */
+    .produtos-section {
+      position: relative;
+      margin-top: -30px;
+      padding-top: 70px;
+      background: #ffffff;
+    }
+    
+    .produtos-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100px;
+      background: linear-gradient(135deg, transparent 0%, rgba(27, 38, 196, 0.05) 50%, transparent 100%);
+      clip-path: polygon(0 40%, 100% 0%, 100% 60%, 0% 100%);
+      z-index: 1;
+    }
+    
+    .produtos-section .container-max {
+      position: relative;
+      z-index: 2;
+    }
+    
+    /* Transição Produtos → Diferenciais: Overlap com blur */
+    #diferenciais {
+      margin-top: -40px;
+      padding-top: 80px;
+      position: relative;
+    }
+    
+    #diferenciais::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 120px;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, transparent 100%);
+      backdrop-filter: blur(1px);
+      z-index: 1;
+    }
+    
+    /* Transição Diferenciais → Segmentos: Curva suave */
+    #segmentos {
+      margin-top: -50px;
+      padding-top: 100px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    #segmentos::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 150px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, #f8fafc 100%);
+      clip-path: ellipse(100% 100% at 50% 0%);
+      z-index: 1;
+    }
+    
+    #segmentos .container-max {
+      position: relative;
+      z-index: 2;
+    }
+    
+    /* Transição Segmentos → Orçamento: Degradê angular */
+    #orcamento {
+      margin-top: -40px;
+      padding-top: 80px;
+      background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+      position: relative;
+    }
+    
+    #orcamento::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 120px;
+      background: linear-gradient(45deg, rgba(27, 38, 196, 0.03) 0%, transparent 50%, rgba(27, 38, 196, 0.02) 100%);
+      clip-path: polygon(0 60%, 100% 20%, 100% 100%, 0% 100%);
+      z-index: 1;
+    }
+    
+    /* === EFEITOS DE MOVIMENTO ENTRE SEÇÕES === */
+    
+    /* Elementos flutuantes na transição produtos */
+    .produtos-section::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100px;
+      background-image: 
+        radial-gradient(3px 3px at 25% 30%, rgba(27, 38, 196, 0.1), transparent),
+        radial-gradient(2px 2px at 75% 60%, rgba(27, 38, 196, 0.08), transparent),
+        radial-gradient(1px 1px at 50% 80%, rgba(27, 38, 196, 0.12), transparent);
+      background-size: 200px 100px;
+      animation: floatDiagonal 15s infinite ease-in-out;
+      z-index: 2;
+    }
+    
+    @keyframes floatDiagonal {
+      0%, 100% { transform: translateX(0px) translateY(0px); }
+      50% { transform: translateX(30px) translateY(-15px); }
+    }
+    
+    /* Ondas sutis na transição segmentos */
+    #segmentos::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(27, 38, 196, 0.02) 25%, 
+        rgba(27, 38, 196, 0.04) 50%, 
+        rgba(27, 38, 196, 0.02) 75%, 
+        transparent 100%);
+      animation: waveFlow 12s infinite ease-in-out;
+      z-index: 3;
+    }
+    
+    @keyframes waveFlow {
+      0%, 100% { transform: scaleX(1); opacity: 0.5; }
+      50% { transform: scaleX(1.1); opacity: 0.8; }
+    }
+    
+    /* === TRANSIÇÃO PARA O FOOTER === */
+    
+    #contato {
+      margin-top: -30px;
+      padding-top: 70px;
+      position: relative;
+      background: linear-gradient(135deg, #eef2f6 0%, #e2e8f0 100%) !important;
+    }
+    
+    #contato::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, transparent 100%);
+      clip-path: polygon(0 0, 100% 40%, 100% 100%, 0% 100%);
+      z-index: 1;
+    }
+    
+    #contato .section-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    /* === EFEITOS GERAIS DE REVEAL === */
+    
+    .reveal-element {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .reveal-element.reveal-active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Efeitos específicos por tipo de elemento */
+    .line-card.reveal-element {
+      transform: translateY(30px) scale(0.95);
+    }
+    
+    .line-card.reveal-active {
+      transform: translateY(0) scale(1);
+    }
+    
+    .diff-card-premium.reveal-element {
+      transform: translateY(25px) rotateX(10deg);
+      opacity: 0;
+    }
+    
+    .diff-card-premium.reveal-active {
+      transform: translateY(0) rotateX(0deg);
+      opacity: 1;
+    }
+    
+    .accordion-item.reveal-element {
+      transform: translateX(-30px);
+      opacity: 0;
+    }
+    
+    .accordion-item.reveal-active {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    
+    /* === CURSOR DINÂMICO === */
+    
+    .dynamic-cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 9999;
+      mix-blend-mode: difference;
+    }
+    
+    .cursor-dot {
+      width: 8px;
+      height: 8px;
+      background: #1b26c4;
+      border-radius: 50%;
+      position: absolute;
+      top: -4px;
+      left: -4px;
+      transition: all 0.1s ease;
+    }
+    
+    .cursor-outline {
+      width: 30px;
+      height: 30px;
+      border: 2px solid rgba(27, 38, 196, 0.3);
+      border-radius: 50%;
+      position: absolute;
+      top: -15px;
+      left: -15px;
+      transition: all 0.3s ease;
+    }
+    
+    .dynamic-cursor.cursor-hover .cursor-dot {
+      transform: scale(1.5);
+      background: #2563eb;
+    }
+    
+    .dynamic-cursor.cursor-hover .cursor-outline {
+      transform: scale(1.5);
+      border-color: rgba(37, 99, 235, 0.6);
+    }
+    
+    @media (hover: none) or (pointer: coarse) {
+      .dynamic-cursor {
+        display: none;
+      }
+    }
+  .hero__content{position:relative;z-index:2;max-width:620px;margin-top:8vh;}
+  /* Variante para aproximar texto da borda esquerda */
+  .hero--left .hero__content{margin:8vh 0 0 0;max-width:640px;padding-left:clamp(.5rem,4.5vw,4rem);padding-right:clamp(1rem,4vw,3rem);}
+  @media (min-width:768px){.hero--left .hero__content{padding-left:clamp(1rem,6vw,6rem);} }
+  @media (min-width:1280px){.hero--left .hero__content{padding-left:clamp(2rem,9vw,11rem);} }
+    .hero h1{font:800 clamp(2.8rem,6vw,4.3rem)/1.04 Ubuntu,system-ui;margin:0 0 1.4rem;color:#fff;letter-spacing:-.015em;}
+    .hero h1 span{display:inline-block;animation:fadeUp .9s ease forwards;}
+    .hero p{color:rgba(255,255,255,.9);font-size:1.05rem;margin:0 0 2rem;max-width:46ch;animation:fadeUp 1s ease .15s both;}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:1rem;animation:fadeUp 1.05s ease .25s both;}
+    .badge{display:inline-flex;align-items:center;gap:.6rem;padding:.7rem 1.6rem;border-radius:3rem;background:rgba(255,255,255,.75);backdrop-filter:blur(8px);border:1px solid rgba(27,38,196,.12);margin-bottom:2rem;}
+    .badge-dot{width:8px;height:8px;border-radius:50%;background:var(--brand);animation:pulseDot 2s infinite;}
+  .text-gradient{background:var(--brand-grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
+    .textile-grid{display:grid;gap:2.25rem;}@media(min-width:960px){.textile-grid{grid-template-columns:repeat(3,1fr);}}
+    .patch{position:relative;background:#fff;border:1px solid #d6dce3;border-radius:1.1rem;padding:2.05rem 2rem 2.2rem;box-shadow:0 4px 14px -4px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.05);} 
+    .patch:before{content:"";position:absolute;inset:0;padding:2px;border-radius:inherit;background:repeating-linear-gradient(45deg,rgba(0,0,0,.03)0 8px,rgba(0,0,0,0)8px 16px);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;}
+    .patch-striped:after{content:"";position:absolute;left:0;top:0;right:0;height:6px;background:repeating-linear-gradient(90deg,#1b26c4 0 16px,#2563eb 16px 32px);border-top-left-radius:inherit;border-top-right-radius:inherit;}
+    .patch-head{font-size:.6rem;letter-spacing:.18em;font-weight:600;color:#1b26c4;background:#e8ecf9;padding:.45rem .85rem;border-radius:999px;display:inline-block;margin:0 0 1.1rem;}
+    .patch-title{margin:.1rem 0 1rem;font:700 1.45rem/1.25 Ubuntu,system-ui;color:#142033;}
+    .bullet{list-style:none;margin:0 0 1.4rem;padding:0;display:grid;gap:.65rem;}
+    .bullet li{display:flex;gap:.55rem;font-size:.8rem;color:#2b3643;line-height:1.4;}
+    .bullet li span{width:10px;height:10px;border:2px solid #1b26c4;border-radius:3px;margin-top:2px;}
+    .tag-dashed{font-size:.55rem;letter-spacing:.16em;font-weight:600;padding:.45rem .7rem;border:1px dashed #1b26c4;color:#1b26c4;border-radius:.55rem;background:#f4f6fb;}
+    .metrics-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.9rem;margin:0 0 1.1rem;}
+    .metric{background:#f8fafc;border:1px dashed #b9c2ce;border-radius:.85rem;text-align:center;padding:.85rem .7rem;}
+    .metric-val{font:700 1.5rem/1 Ubuntu,system-ui;color:#1b26c4;}
+    .metric-label{font-size:.55rem;letter-spacing:.18em;font-weight:600;color:#2b3742;}
+    .cta-panel{background:linear-gradient(145deg,#1b26c4 0%,#2032d4 55%,#2563eb 100%);color:#fff;border-radius:1.25rem;padding:2.1rem 2rem 2.3rem;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 16px 38px -12px rgba(27,38,196,.45);} 
+    .cta-panel h4{margin:0 0 1rem;font:700 1.35rem/1.25 Ubuntu,system-ui;}
+    .cta-panel p{margin:0 0 1.4rem;font-size:.85rem;line-height:1.5;color:rgba(255,255,255,.9);} 
+    .line-card{display:flex;flex-direction:column;gap:.9rem;background:#fff;border:1px solid #d8e0e9;border-radius:1rem;padding:1.4rem;box-shadow:0 4px 14px -6px rgba(20,40,60,.12);} 
+    .card-figure{position:relative;border-radius:.8rem;overflow:hidden;aspect-ratio:4/3;background:#f0f3f6;border:1px solid #d5dbe3;}
+    .card-figure img{width:100%;height:100%;object-fit:contain;}
+    .card-figure span{position:absolute;right:8px;bottom:8px;background:rgba(27,38,196,.9);color:#fff;font-size:.62rem;font-weight:600;padding:.3rem .55rem;border-radius:.5rem;letter-spacing:.05em;}
+    .line-title{margin:.2rem 0;font-size:.85rem;font-weight:600;letter-spacing:.08em;color:#1b26c4;text-transform:uppercase;}
+    .line-items{list-style:none;margin:0;padding:0;display:grid;gap:.45rem;font-size:.72rem;color:#2f3a47;}
+    .diff-item{background:#fff;border:1px solid #d8e0e9;border-radius:.9rem;padding:1rem .9rem;font-size:.8rem;font-weight:500;display:flex;align-items:flex-start;gap:.55rem;}
+    
+    .diff-card-premium {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 20px;
+      padding: 3rem 2rem;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.08);
+      transform: translateZ(0);
+    }
+    
+    .diff-card-premium::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #1b26c4, #2563eb);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    
+    .diff-card-premium:hover {
+      transform: translateY(-15px) scale(1.02);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15), 0 10px 25px rgba(27, 38, 196, 0.1);
+      border-color: rgba(27, 38, 196, 0.4);
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(20px);
+    }
+    
+    .diff-card-premium:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .diff-icon {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 2rem;
+      color: white;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      transition: all 0.4s ease;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .diff-card-premium:hover .diff-icon {
+      transform: scale(1.15) rotate(-5deg);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+    }
+    
+    .diff-card-premium h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin: 0 0 1rem;
+      line-height: 1.2;
+      text-align: center;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+    
+    .diff-card-premium p {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.6;
+      margin: 0;
+      text-align: center;
+      font-weight: 400;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    }
+    .segment-item{background:#ffffff;border:1px solid #d8e0e9;border-radius:1rem;padding:1rem .9rem;font-size:.8rem;font-weight:500;text-align:center;}
+    .segment-item:hover{background:#f2f6fa;border-color:#c8d2dd;}
+    
+    .accordion-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .accordion-item {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      position: relative;
+    }
+    
+    .accordion-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent 0%, #1b26c4 50%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .accordion-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      border-color: #cbd5e1;
+    }
+    
+    .accordion-item:hover::before {
+      opacity: 1;
+    }
+    
+    .accordion-header {
+      padding: 1.75rem 2rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(135deg, #fafbfc 0%, #f1f5f9 100%);
+      transition: all 0.4s ease;
+      user-select: none;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .accordion-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+      transition: left 0.6s ease;
+    }
+    
+    .accordion-header:hover::before {
+      left: 100%;
+    }
+    
+    .accordion-title-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .accordion-icon-svg {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      color: #475569;
+    }
+    
+    .accordion-header:hover .accordion-icon-svg {
+      background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+      transform: scale(1.05);
+      color: #1b26c4;
+    }
+    
+    .accordion-header h3 {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #1e293b;
+      transition: color 0.3s ease;
+    }
+    
+    .accordion-icon {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #1b26c4;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      line-height: 1;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(27, 38, 196, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .accordion-item.active .accordion-icon {
+      transform: rotate(45deg);
+      background: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+    }
+    
+    .accordion-item.active .accordion-header {
+      background: linear-gradient(135deg, #1b26c4 0%, #2563eb 100%);
+    }
+    
+    .accordion-item.active .accordion-header h3 {
+      color: #ffffff;
+    }
+    
+    .accordion-item.active .accordion-icon-svg {
+      background: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      backdrop-filter: blur(10px);
+    }
+    
+    .accordion-item.active::before {
+      opacity: 0;
+    }
+    
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      background: #ffffff;
+    }
+    
+    .accordion-item.active .accordion-content {
+      max-height: 300px;
+    }
+    
+    .accordion-content > div {
+      padding: 2rem;
+    }
+    
+    .accordion-content p {
+      margin: 0 0 1.5rem;
+      color: #475569;
+      line-height: 1.6;
+      font-size: 1rem;
+    }
+    
+    .accordion-content ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    
+    .accordion-content li {
+      padding: 0.5rem 0;
+      color: #64748b;
+      font-size: 0.95rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+    
+    .accordion-content li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #10b981;
+      font-weight: bold;
+    }
+    .input{width:100%;border-radius:.75rem;background:#fff;border:1px solid #c9d2db;padding:.85rem 1rem;font-size:.85rem;transition:.25s;} .input:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px rgba(27,38,196,.15);} .input:hover{border-color:#a0acb7;}
+  .footer-title{font:700 1.05rem/1.2 Ubuntu,system-ui;margin:0 0 .8rem;color:#142033;} footer{background:#eef2f6;}
+  /* ===== HEADER STATES ===== */
+  #siteHeader{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;transition:background .45s, box-shadow .45s,border-color .45s, backdrop-filter .45s; background:transparent;border-bottom:1px solid transparent;}
+  #siteHeader.nav-solid{background:rgba(255,255,255,.9);backdrop-filter:blur(14px);border-color:#d5dbe3;box-shadow:0 8px 26px -10px rgba(0,0,0,.18);}
+  #siteHeader .nav-link{font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#fff;position:relative;display:inline-block;padding:.35rem 0;transition:color .35s;}
+  #siteHeader .nav-link:after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:linear-gradient(90deg,#fff,#fff);transition:width .35s;}
+  #siteHeader .nav-link:hover:after{width:100%;}
+  #siteHeader.nav-solid .nav-link{color:#1c2632;}
+  #siteHeader.nav-solid .nav-link:after{background:linear-gradient(90deg,#1b26c4,#2563eb);}    
+  #siteHeader.nav-solid .nav-link:hover{color:#1b26c4;}
+  /* Logo swap (filter) - branca no estado transparente */
+  .site-logo{transition:filter .45s ease,opacity .45s;}
+  #siteHeader:not(.nav-solid) .site-logo{filter:brightness(0) invert(1) contrast(105%) saturate(0);}
+  #siteHeader.nav-solid .site-logo{filter:none;}
+    /* ====== SOBRE (refactor) ====== */
+    .sobre-section{background:linear-gradient(135deg,#ffffff 0%,#f1f5f9 60%,#c1c5cc 100%);overflow:hidden;position:relative;}
+    .section-head{max-width:860px;margin:0 auto 2.8rem;}
+    .section-head .badge{margin-bottom:1.6rem;}
+    .section-subtitle{font-size:1.05rem;color:#4B4B4D;margin:0 0 1.5rem;font-weight:400;}
+    .separator{width:58px;height:3px;background:linear-gradient(90deg,#1b26c4,#2563eb);margin:0 auto;border-radius:2px;}
+    /* Patch refinements */
+    .patch{transition:box-shadow .35s,border-color .35s;} .patch:hover{box-shadow:0 8px 28px -10px rgba(0,0,0,.15);} 
+    .patch-striped{--stripe:#1b26c4;} .patch-striped:after{background:repeating-linear-gradient(90deg,var(--stripe) 0 14px,#2563eb 14px 28px);} 
+    /* Metrics */
+    .metrics-grid{margin:0 0 1.25rem;}
+    .metric{position:relative;border:1px dashed #c9d2db;background:#fff;}
+    .metric:after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(27,38,196,.05);}
+    /* Bullets */
+    .bullet{--bcol:#1b26c4;}
+    .bullet li{position:relative;padding-left:1.05rem;}
+    .bullet li span{position:absolute;left:0;top:.35rem;width:10px;height:10px;border:2px solid var(--bcol);border-radius:3px;}
+    /* CTA panel adjustments */
+    .cta-panel{display:flex;flex-direction:column;gap:1.2rem;}
+    .cta-panel .cta-btn-clean{background:#fff;color:#1b26c4;font-weight:600;font-size:.8rem;padding:.85rem 1.25rem;border-radius:.75rem;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 4px 18px -6px rgba(0,0,0,.35);transition:transform .35s,box-shadow .35s;}
+    .cta-panel .cta-btn-clean:hover{transform:translateY(-3px);box-shadow:0 10px 26px -8px rgba(0,0,0,.45);}
+    @media (min-width:960px){.cta-panel{padding:2.15rem 2rem 2.4rem;}}
+    /* Tags agrupadas */
+    .tag-cloud{display:flex;flex-wrap:wrap;gap:.55rem;}
+  /* ==== NOVO SOBRE ==== */
+  .sobre-grid{display:grid;gap:3rem;align-items:start;}
+  @media(min-width:1100px){.sobre-grid{display:flex;align-items:stretch;gap:4.5rem;}}
+  .sobre-intro{position:relative;z-index:2;}
+  .sobre-badge{display:inline-flex;align-items:center;gap:.6rem;background:rgba(27,38,196,.08);color:#1b26c4;font-size:.6rem;font-weight:600;letter-spacing:.18em;padding:.55rem 1.1rem;border-radius:2rem;margin-bottom:1.6rem;}
+  .sobre-badge-dot{width:9px;height:9px;border-radius:50%;background:linear-gradient(135deg,#1b26c4,#2563eb);box-shadow:0 0 0 4px rgba(27,38,196,.15);animation:pulseDot 2.4s infinite;}
+  .sobre-heading{font:800 clamp(2.4rem,4.8vw,3.2rem)/1.05 Ubuntu,system-ui;margin:0 0 1.4rem;color:#142033;}
+  .sobre-heading .grad{background:var(--brand-grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .sobre-intro p{font-size:.95rem;line-height:1.58;color:#2b3541;margin:0 0 1.35rem;max-width:70ch;text-align:justify;}
+  .sobre-bullets{list-style:none;margin:1.6rem 0 2.2rem;padding:0;display:grid;gap:.85rem;}
+  .sobre-bullets li{position:relative;padding-left:1.35rem;font-size:.85rem;line-height:1.5;color:#24313d;font-weight:500;}
+  .sobre-bullets li span{position:absolute;left:0;top:.3rem;width:12px;height:12px;border-radius:4px;border:2px solid #1b26c4;background:#1b26c4;}
+  /* Justificação apenas para seção sobre */
+  .sobre-intro p{text-align:justify;}
+  .sobre-actions{display:flex;flex-wrap:wrap;gap:1rem;}
+  .sobre-btn{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;padding:1rem 1.6rem;border-radius:.9rem;display:inline-flex;align-items:center;justify-content:center;transition:all .3s ease;position:relative;overflow:hidden;}
+  .sobre-btn.ghost{background:rgba(27,38,196,.08);color:#1b26c4;}
+  .sobre-btn.ghost:hover{background:rgba(27,38,196,.15);} 
+  .sobre-btn.solid{background:var(--brand-grad);color:#fff;box-shadow:0 8px 26px -6px rgba(27,38,196,.45);}
+  .sobre-btn.solid:hover{transform:translateY(-3px);box-shadow:0 12px 30px -6px rgba(27,38,196,.4), 0 0 20px rgba(27,38,196,.2);animation:btnGlow 1.5s ease-in-out infinite alternate;}
+  .sobre-btn.solid::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);transition:left .6s ease;}
+  .sobre-btn.solid:hover::before{left:100%;}
+  
+  @keyframes btnGlow{
+    0%{box-shadow:0 12px 30px -6px rgba(27,38,196,.4), 0 0 20px rgba(27,38,196,.2);}
+    100%{box-shadow:0 12px 30px -6px rgba(27,38,196,.5), 0 0 25px rgba(27,38,196,.3);}
+  }
+  /* Mockup único à direita */
+  .sobre-gallery{position:relative;display:flex;align-items:center;justify-content:center;margin-top:2.2rem;overflow:visible;max-width:100%;padding:0;}
+  @media(min-width:1100px){.sobre-gallery{margin-top:0;flex:1;max-width:900px;}}
+  @media(min-width:1280px){.sobre-gallery{max-width:1100px;}}
+  @media(min-width:1536px){.sobre-gallery{max-width:1300px;}}
+  .sobre-gallery{overflow:visible;}
+  .sobre-gallery img{width:320px !important;height:auto !important;max-width:none !important;object-fit:contain;filter:drop-shadow(0 25px 50px -15px rgba(0,0,0,.35));animation:fadeUp .9s ease .15s both, floatAnimation 6s ease-in-out infinite;transition:transform .8s cubic-bezier(.22,.84,.33,1),filter .5s ease;cursor:pointer;}
+  @media (min-width:1100px){.sobre-gallery img{width:400px !important;}}
+  @media (min-width:1280px){.sobre-gallery img{width:460px !important;}}
+  @media (min-width:1536px){.sobre-gallery img{width:500px !important;}}
+  @media (min-width:1800px){.sobre-gallery img{width:530px !important;}}
+  @media (min-width:2200px){.sobre-gallery img{width:560px !important;}}
+  .sobre-gallery img:hover{transform:scale(1.08) rotate(2deg);filter:drop-shadow(0 35px 70px -20px rgba(0,0,0,.45)) brightness(1.05);}
+  
+  @keyframes floatAnimation{
+    0%,100%{transform:translateY(0px) rotate(0deg);}
+    33%{transform:translateY(-8px) rotate(1deg);}
+    66%{transform:translateY(-4px) rotate(-0.5deg);}
+  }
+  
+  /* Modal de produtos */
+  .product-modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;z-index:1000;padding:2rem;}
+  .product-modal.active{display:flex;}
+  .modal-content{background:#fff;border-radius:1rem;max-width:90vw;max-height:85vh;overflow-y:auto;position:relative;animation:modalSlideIn .3s ease;}
+  .modal-header{padding:1.5rem 2rem;border-bottom:1px solid #e5e7eb;display:flex;justify-content:space-between;align-items:center;}
+  .modal-title{font-size:1.5rem;font-weight:700;color:#1b26c4;margin:0;}
+  .modal-close{background:none;border:none;font-size:1.5rem;cursor:pointer;color:#6b7280;transition:color .2s;}
+  .modal-close:hover{color:#1b26c4;}
+  .modal-body{padding:2rem;}
+  .product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;}
+  .product-item{border-radius:.75rem;overflow:hidden;border:1px solid #e5e7eb;transition:transform .2s,box-shadow .2s;}
+  .product-item:hover{transform:translateY(-2px);box-shadow:0 10px 25px -8px rgba(0,0,0,.15);}
+  .product-item img{width:100%;aspect-ratio:1;object-fit:contain;background:#f9fafb;}
+  .product-name{padding:.75rem;font-size:.85rem;font-weight:600;color:#374151;text-align:center;}
+  .line-card{cursor:pointer;transition:transform .2s,box-shadow .2s;}
+  .line-card:hover{transform:translateY(-2px);box-shadow:0 8px 20px -6px rgba(0,0,0,.1);}
+  
+  /* Seção Produtos Melhorada */
+  .produtos-section{background:linear-gradient(180deg,#f8fafc 0%,#fff 100%);padding:4rem 0;}
+  .produtos-header{text-align:center;margin-bottom:3.5rem;}
+  .produtos-tag{background:linear-gradient(135deg,#1b26c4,#2563eb);color:#fff;border:0;padding:.5rem 1.2rem;border-radius:.5rem;font-weight:600;letter-spacing:.1em;box-shadow:0 4px 12px rgba(27,38,196,.2);}
+  .produtos-title{margin:1.5rem 0 1rem;background:linear-gradient(135deg,#1b26c4,#2563eb);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .produtos-subtitle{font-size:1.1rem;color:#64748b;max-width:600px;margin:0 auto;line-height:1.6;text-align:center;}
+  .produtos-grid{display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));}
+  @media(min-width:768px){.produtos-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(min-width:1200px){.produtos-grid{grid-template-columns:repeat(4,1fr);}}
+  
+  /* Cards Premium */
+  .line-card-premium{background:#fff;border:1px solid #e2e8f0;border-radius:1.25rem;padding:0;box-shadow:0 4px 20px -8px rgba(0,0,0,.1);transition:all .3s ease;position:relative;overflow:hidden;}
+  .line-card-premium:hover{transform:translateY(-8px);box-shadow:0 20px 40px -12px rgba(0,0,0,.15);border-color:#1b26c4;}
+  .line-card-premium::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(135deg,#1b26c4,#2563eb);opacity:0;transition:opacity .3s ease;}
+  .line-card-premium:hover::before{opacity:1;}
+  
+  .card-figure{position:relative;margin:0;border-radius:1.25rem 1.25rem 0 0;overflow:hidden;}
+  .card-figure img{animation:floatProductCards 4s ease-in-out infinite;transition:transform .5s ease;}
+  .card-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 80%,rgba(0,0,0,.2) 100%);opacity:0;transition:opacity .3s ease;display:flex;align-items:end;justify-content:center;padding:1.5rem;}
+  .line-card-premium:hover .card-overlay{opacity:1;}
+  .line-card-premium:hover .card-figure img{transform:scale(1.05);}
+  
+  /* Estilos da seção orçamento */
+  .benefit-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(27, 38, 196, 0.15);
+    border-color: rgba(27, 38, 196, 0.2);
+  }
+  
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: #1b26c4 !important;
+    box-shadow: 0 0 0 3px rgba(27, 38, 196, 0.1) !important;
+    outline: none !important;
+  }
+  
+  .btn-primary:hover .div {
+    left: 100%;
+  }
+  
+  @media (max-width: 768px) {
+    .orcamento-content h2 {
+      font-size: 2rem !important;
+    }
+    
+    .benefit-item {
+      flex-direction: column;
+      text-align: center;
+      gap: 0.8rem !important;
+    }
+    
+    .orcamento-form {
+      padding: 1.5rem !important;
+    }
+  }
+  .view-products{color:#fff;font-weight:600;font-size:.9rem;letter-spacing:.05em;text-transform:uppercase;}
+  
+  .card-content{padding:1.5rem;}
+  .line-title{font-size:1.2rem;font-weight:700;color:#1e293b;margin:0 0 .75rem;line-height:1.3;}
+  .line-description{font-size:.9rem;color:#64748b;line-height:1.6;margin:0 0 1.25rem;}
+  
+  .line-features{list-style:none;padding:0;margin:0 0 1.25rem;display:grid;gap:.5rem;}
+  .line-features li{display:flex;align-items:center;font-size:.85rem;color:#475569;}
+  .feature-icon{color:#10b981;font-weight:bold;margin-right:.5rem;font-size:.9rem;}
+  
+  .card-stats{padding-top:1rem;border-top:1px solid #f1f5f9;}
+  .stat-item{font-size:.75rem;color:#1b26c4;font-weight:600;text-transform:uppercase;letter-spacing:.05em;}
+  
+  @keyframes floatProductCards{
+    0%,100%{transform:translateY(0px);}
+    50%{transform:translateY(-6px);}
+  }
+  
+  @keyframes modalSlideIn{
+    from{opacity:0;transform:scale(.9);}
+    to{opacity:1;transform:scale(1);}
+  }
+  </style>
+</head>
+<body>
+  <header id="siteHeader">
+    <div class="container-max flex items-center justify-between h-20">
+  <img src="assets/images/Zaptex logo color.png" alt="ZapTex" class="site-logo h-10 w-auto" />
+      <nav class="hidden md:flex items-center gap-8" aria-label="Menu Principal">
+        <a class="nav-link" href="#inicio">Início</a>
+        <a class="nav-link" href="#sobre">Sobre</a>
+        <a class="nav-link" href="#produtos">Produtos</a>
+        <a class="nav-link" href="#segmentos">Segmentos</a>
+        <a class="nav-link" href="#orcamento">Orçamento</a>
+        <a class="nav-link" href="#contato">Contato</a>
+      </nav>
+      <a href="#orcamento" class="btn btn-primary hidden md:inline-flex">Solicitar Orçamento</a>
+    </div>
+  </header>
+
+  <main id="inicio">
+  <section class="hero hero--left" aria-label="Apresentação">
+      <div class="hero__bg hero-bg-anim"></div>
+      <div class="hero__overlay hero-gradient-overlay"></div>
+      <div class="container-max hero__content">
+        <h1><span style="animation-delay:.15s">Vista.</span><br><span style="animation-delay:.28s">Divulgue.</span><br><span style="animation-delay:.42s">Impressione.</span></h1>
+        <p style="text-align: left;">Soluções têxteis personalizadas para empresas, eventos e atléticas com mais de 20 anos de expertise.</p>
+        <div class="hero-actions">
+          <a href="#orcamento" class="btn btn-primary" style="font-size:.95rem;padding:1rem 2rem;border-radius:.9rem;">Solicitar Orçamento</a>
+          <a href="#produtos" class="btn btn-outline" style="font-size:.95rem;padding:1rem 2rem;border-radius:.9rem;">Ver Produtos</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre" class="section sobre-section" aria-labelledby="sobre-title">
+      <div class="container-max">
+        <div class="sobre-grid">
+          <div class="sobre-intro" aria-labelledby="sobre-title">
+            <div class="sobre-badge">
+              <span class="sobre-badge-dot" aria-hidden="true"></span>
+              <span>QUEM SOMOS</span>
+            </div>
+            <h2 id="sobre-title" class="sobre-heading">Sobre a <span class="grad">Zaptex</span></h2>
+            <p>A Zaptex nasceu como a divisão têxtil do Grupo Zap, trazendo consigo mais de duas décadas de expertise e solidez no mercado gráfico nacional. Desde o início, nossa missão sempre foi clara: ir além do básico, criando soluções têxteis inteligentes que unem tecnologia de ponta, inovação e um atendimento próximo e humanizado.</p>
+            <p>Cada tecido, estampa e acabamento que desenvolvemos carrega a nossa essência: qualidade, exclusividade e o compromisso com a excelência em cada detalhe. Mais do que produzir, buscamos transformar ideias em experiências únicas, fortalecendo marcas e conectando pessoas por meio do universo têxtil.</p>
+            <ul class="sobre-bullets" aria-label="Pilares">
+              <li><span></span>Atuamos com foco em produtos têxteis personalizados sob demanda.</li>
+              <li><span></span>Aproveitamos a força de impressão digital da Zap para produzir soluções únicas.</li>
+              <li><span></span>Fabricação própria com estrutura e equipe dedicada.</li>
+            </ul>
+            <div class="sobre-actions">
+              <a href="#produtos" class="sobre-btn ghost">Ver Produtos</a>
+              <a href="#orcamento" class="sobre-btn solid">Solicitar Orçamento</a>
+            </div>
+          </div>
+            <div class="sobre-gallery" aria-label="Mockup camisas polo ZapTex">
+              <img src="assets/images/mockups/POLO-ZAPTEX.webp?v=2" alt="Mockup camisas polo ZapTex frente e costas" loading="lazy" />
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="produtos" class="section produtos-section" aria-labelledby="produtos-title">
+      <div class="container-max">
+        <div class="produtos-header">
+          <span class="tag-dashed produtos-tag">PORTFÓLIO</span>
+          <h2 id="produtos-title" class="section-title produtos-title">Nossas Linhas de Produto</h2>
+          <p class="produtos-subtitle">Soluções completas para cada necessidade, desenvolvidas com qualidade e inovação</p>
+        </div>
+        <div class="produtos-grid">
+          <article class="line-card line-card-premium" data-category="uniformes">
+            <figure class="card-figure">
+              <img src="assets/images/mockups/POLO-ZAPTEX3.webp" alt="Uniformes Profissionais" loading="lazy"/>
+              <div class="card-overlay">
+                <span class="view-products">Ver Produtos</span>
+              </div>
+            </figure>
+            <div class="card-content">
+              <h3 class="line-title">Uniformes Profissionais</h3>
+              <p class="line-description">Peças funcionais sob medida que fortalecem a identidade corporativa com qualidade superior.</p>
+              <ul class="line-features">
+                <li><span class="feature-icon">✓</span>Aventais especializados</li>
+                <li><span class="feature-icon">✓</span>Camisas corporativas</li>
+                <li><span class="feature-icon">✓</span>Jalecos profissionais</li>
+              </ul>
+              <div class="card-stats">
+                <span class="stat-item">20+ anos experiência</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="line-card line-card-premium" data-category="sports">
+            <figure class="card-figure">
+              <img src="assets/images/mockups/CAMISA SPORT.webp" alt="Esportes & Atléticas" loading="lazy"/>
+              <div class="card-overlay">
+                <span class="view-products">Ver Produtos</span>
+              </div>
+            </figure>
+            <div class="card-content">
+              <h3 class="line-title">Esportes & Atléticas</h3>
+              <p class="line-description">Performance e personalização que elevam o nível dos jogos e atividades esportivas.</p>
+              <ul class="line-features">
+                <li><span class="feature-icon">✓</span>Camisas atléticas</li>
+                <li><span class="feature-icon">✓</span>Coletes sublimados</li>
+                <li><span class="feature-icon">✓</span>Kits personalizados</li>
+              </ul>
+              <div class="card-stats">
+                <span class="stat-item">Tecnologia Dry Fit</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="line-card line-card-premium" data-category="eventos">
+            <figure class="card-figure">
+              <img src="assets/images/mockups/WINDBANNER.webp" alt="Eventos & Brindes" loading="lazy"/>
+              <div class="card-overlay">
+                <span class="view-products">Ver Produtos</span>
+              </div>
+            </figure>
+            <div class="card-content">
+              <h3 class="line-title">Eventos & Brindes</h3>
+              <p class="line-description">Materiais promocionais que ampliam o alcance e presença da sua marca nos eventos.</p>
+              <ul class="line-features">
+                <li><span class="feature-icon">✓</span>Wind banners premium</li>
+                <li><span class="feature-icon">✓</span>Bandeiras institucionais</li>
+                <li><span class="feature-icon">✓</span>Brindes personalizados</li>
+              </ul>
+              <div class="card-stats">
+                <span class="stat-item">Impressão 4x0</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="line-card line-card-premium" data-category="igreja">
+            <figure class="card-figure">
+              <img src="assets/images/mockups/IGREJA.webp" alt="Igreja & Desbravadores" loading="lazy"/>
+              <div class="card-overlay">
+                <span class="view-products">Ver Produtos</span>
+              </div>
+            </figure>
+            <div class="card-content">
+              <h3 class="line-title">Igreja & Ministérios</h3>
+              <p class="line-description">Identidade visual que fortalece a união e propósito dos grupos e ministérios cristãos.</p>
+              <ul class="line-features">
+                <li><span class="feature-icon">✓</span>Uniformes desbravadores</li>
+                <li><span class="feature-icon">✓</span>Camisas missionárias</li>
+                <li><span class="feature-icon">✓</span>Materiais ministeriais</li>
+              </ul>
+              <div class="card-stats">
+                <span class="stat-item">Designs exclusivos</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal de Produtos -->
+    <div id="productModal" class="product-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="modalTitle" class="modal-title">Produtos</h3>
+          <button class="modal-close" onclick="closeProductModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div id="productGrid" class="product-grid">
+            <!-- Produtos serão carregados aqui -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section id="diferenciais" class="section" aria-labelledby="diff-title" style="position: relative; overflow: hidden;">
+      <!-- Video Background -->
+      <video autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
+        <source src="assets/videos/video01.mp4" type="video/mp4">
+      </video>
+      
+      <!-- Overlay -->
+      <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, rgba(15, 23, 42, 0.6) 100%); z-index: 1;"></div>
+      
+      <div class="container-max" style="position: relative; z-index: 2;">
+        <div style="text-align: center; margin-bottom: 4rem;">
+          <span class="tag-dashed" style="background: rgba(255, 255, 255, 0.15); color: #fff; border: 1px solid rgba(255, 255, 255, 0.2); padding: 0.5rem 1.5rem; border-radius: 2rem; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.05em; backdrop-filter: blur(10px);">POR QUE ZAPTEX</span>
+          <h2 id="diff-title" class="section-title" style="margin-top: 1.5rem; color: #fff; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);">Nossos Diferenciais</h2>
+          <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.1rem; max-width: 600px; margin: 1rem auto 0; text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3); text-align: center;">Tecnologia, qualidade e agilidade que fazem a diferença no seu projeto</p>
+        </div>
+        
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5" style="margin-top: 3rem;">
+          <div class="diff-card-premium">
+            <div class="diff-icon" style="background: linear-gradient(135deg, #1b26c4 0%, #2563eb 60%, #1b26c4 100%);">
+              <!-- Ícone de relógio para Produção Ágil -->
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+              </svg>
+            </div>
+            <h3>Produção Ágil</h3>
+            <p>DTF & Sublimação com entrega rápida e qualidade garantida</p>
+          </div>
+          
+          <div class="diff-card-premium">
+            <div class="diff-icon" style="background: linear-gradient(135deg, #1b26c4 0%, #2563eb 60%, #1b26c4 100%);">
+              <!-- Ícone de pincel para Design Incluso -->
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M7 14c-1.66 0-3 1.34-3 3 0 1.31-1.16 2-2 2 .92 1.22 2.49 2 4 2 2.21 0 4-1.79 4-4 0-1.66-1.34-3-3-3z"/>
+                <path d="M20.71 4.63l-1.34-1.34c-.39-.39-1.02-.39-1.41 0L9 12.25 11.75 15l8.96-8.96c.39-.39.39-1.02 0-1.41z"/>
+              </svg>
+            </div>
+            <h3>Design Incluso</h3>
+            <p>Equipe criativa experiente para desenvolver seu projeto</p>
+          </div>
+          
+          <div class="diff-card-premium">
+            <div class="diff-icon" style="background: linear-gradient(135deg, #1b26c4 0%, #2563eb 60%, #1b26c4 100%);">
+              <!-- Ícone de fábrica/estrutura para Estrutura Interna -->
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 3L2 12h3v8h14v-8h3L12 3zm0 2.5L18.5 12H17v6H7v-6H5.5L12 5.5z"/>
+                <path d="M9 10h6v2H9zm0 3h6v2H9zm0 3h6v2H9z"/>
+                <circle cx="10" cy="11" r="0.5"/>
+                <circle cx="14" cy="11" r="0.5"/>
+                <circle cx="10" cy="14" r="0.5"/>
+                <circle cx="14" cy="14" r="0.5"/>
+              </svg>
+            </div>
+            <h3>Estrutura Interna</h3>
+            <p>Corte e costura próprios para maior controle de qualidade</p>
+          </div>
+          
+          <div class="diff-card-premium">
+            <div class="diff-icon" style="background: linear-gradient(135deg, #1b26c4 0%, #2563eb 60%, #1b26c4 100%);">
+              <!-- Ícone de lupa com engrenagem para Controle Técnico -->
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                <path d="M12 10.5h-2V12h2v-1.5zm0-2h-2V10h2V8.5zm-3-1.5v1h1V7H9zm1 4.5H9v1h1v-1z"/>
+              </svg>
+            </div>
+            <h3>Controle Técnico</h3>
+            <p>Precisão absoluta em cores e toque dos materiais</p>
+          </div>
+          
+          <div class="diff-card-premium">
+            <div class="diff-icon" style="background: linear-gradient(135deg, #1b26c4 0%, #2563eb 60%, #1b26c4 100%);">
+              <!-- Ícone de caminhão/entrega para Entrega Nacional -->
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20 8h-3V4H3C1.9 4 1 4.9 1 6v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+                <path d="M3 6h12v2H3zm0 3h12v2H3z"/>
+              </svg>
+            </div>
+            <h3>Entrega Nacional</h3>
+            <p>Cobertura completa para todo o território brasileiro</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="segmentos" class="section" aria-labelledby="segmentos-title" style="background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);">
+      <div class="container-max">
+        <div style="text-align: center; margin-bottom: 4rem;">
+          <span class="tag-dashed" style="background: linear-gradient(135deg, #1b26c4, #2563eb); color: #fff; border: 0; padding: 0.5rem 1.5rem; border-radius: 2rem; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.05em; box-shadow: 0 4px 15px rgba(27, 38, 196, 0.3);">MERCADOS</span>
+          <h2 id="segmentos-title" class="section-title" style="margin-top: 1.5rem;">Segmentos Atendidos</h2>
+          <p style="color: #64748b; font-size: 1.1rem; max-width: 600px; margin: 1rem auto 0;">Atendemos diversos mercados com soluções personalizadas</p>
+        </div>
+        
+        <div class="accordion-container" style="max-width: 800px; margin: 0 auto;">
+          <div class="accordion-item" data-segment="empresas">
+            <div class="accordion-header">
+              <div class="accordion-title-wrapper">
+                <div class="accordion-icon-svg">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 21h18"/>
+                    <path d="M5 21V7l8-4v18"/>
+                    <path d="M19 21V11l-6-4"/>
+                    <path d="M9 9v.01"/>
+                    <path d="M9 12v.01"/>
+                    <path d="M9 15v.01"/>
+                    <path d="M9 18v.01"/>
+                  </svg>
+                </div>
+                <h3>Empresas</h3>
+              </div>
+              <span class="accordion-icon">+</span>
+            </div>
+            <div class="accordion-content">
+              <div>
+                <p>Uniformes corporativos, brindes promocionais e materiais personalizados para fortalecer a identidade da sua empresa.</p>
+                <ul>
+                  <li>Camisetas e uniformes corporativos</li>
+                  <li>Brindes promocionais personalizados</li>
+                  <li>Materiais para eventos corporativos</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item" data-segment="agencias">
+            <div class="accordion-header">
+              <div class="accordion-title-wrapper">
+                <div class="accordion-icon-svg">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </div>
+                <h3>Agências</h3>
+              </div>
+              <span class="accordion-icon">+</span>
+            </div>
+            <div class="accordion-content">
+              <div>
+                <p>Parceria estratégica para agências com produção ágil e qualidade garantida para seus clientes.</p>
+                <ul>
+                  <li>Produção em larga escala</li>
+                  <li>Suporte técnico especializado</li>
+                  <li>Prazos otimizados para campanhas</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item" data-segment="igrejas">
+            <div class="accordion-header">
+              <div class="accordion-title-wrapper">
+                <div class="accordion-icon-svg">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 3l-1 1v4l1 1 1-1V4l-1-1z"/>
+                    <path d="M10 4h4"/>
+                    <path d="M3 9l9-6 9 6v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z"/>
+                    <polyline points="9,22 9,12 15,12 15,22"/>
+                  </svg>
+                </div>
+                <h3>Igrejas</h3>
+              </div>
+              <span class="accordion-icon">+</span>
+            </div>
+            <div class="accordion-content">
+              <div>
+                <p>Camisetas para eventos religiosos, acampamentos e atividades da congregação.</p>
+                <ul>
+                  <li>Camisetas para eventos e retiros</li>
+                  <li>Uniformes para ministérios</li>
+                  <li>Materiais para campanhas evangelísticas</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item" data-segment="escolas">
+            <div class="accordion-header">
+              <div class="accordion-title-wrapper">
+                <div class="accordion-icon-svg">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                  </svg>
+                </div>
+                <h3>Escolas</h3>
+              </div>
+              <span class="accordion-icon">+</span>
+            </div>
+            <div class="accordion-content">
+              <div>
+                <p>Uniformes escolares e materiais para eventos educacionais com qualidade e durabilidade.</p>
+                <ul>
+                  <li>Uniformes escolares personalizados</li>
+                  <li>Camisetas para eventos esportivos</li>
+                  <li>Materiais para formatura</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item" data-segment="eventos">
+            <div class="accordion-header">
+              <div class="accordion-title-wrapper">
+                <div class="accordion-icon-svg">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M8 2v4"/>
+                    <path d="M16 2v4"/>
+                    <rect x="3" y="4" width="18" height="18" rx="2"/>
+                    <path d="M3 10h18"/>
+                    <path d="M8 14h.01"/>
+                    <path d="M12 14h.01"/>
+                    <path d="M16 14h.01"/>
+                    <path d="M8 18h.01"/>
+                    <path d="M12 18h.01"/>
+                    <path d="M16 18h.01"/>
+                  </svg>
+                </div>
+                <h3>Eventos</h3>
+              </div>
+              <span class="accordion-icon">+</span>
+            </div>
+            <div class="accordion-content">
+              <div>
+                <p>Soluções completas para eventos de todos os tamanhos, desde pequenas reuniões até grandes festivais.</p>
+                <ul>
+                  <li>Camisetas para congressos e feiras</li>
+                  <li>Materiais promocionais para eventos</li>
+                  <li>Produção express para datas especiais</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item" data-segment="atleticas">
+            <div class="accordion-header">
+              <div class="accordion-title-wrapper">
+                <div class="accordion-icon-svg">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="8" r="6"/>
+                    <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+                  </svg>
+                </div>
+                <h3>Atléticas</h3>
+              </div>
+              <span class="accordion-icon">+</span>
+            </div>
+            <div class="accordion-content">
+              <div>
+                <p>Uniformes esportivos e materiais personalizados para atléticas universitárias e times esportivos.</p>
+                <ul>
+                  <li>Uniformes esportivos de alta performance</li>
+                  <li>Camisetas para torcidas organizadas</li>
+                  <li>Materiais para competições universitárias</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="orcamento" class="section" aria-labelledby="orcamento-title" style="background: linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f1f5f9 100%); position: relative;">
+      <!-- Elementos decorativos -->
+      <div style="position: absolute; top: 10%; right: 5%; width: 100px; height: 100px; background: linear-gradient(135deg, rgba(27, 38, 196, 0.1), rgba(37, 99, 235, 0.05)); border-radius: 50%; filter: blur(30px);"></div>
+      <div style="position: absolute; bottom: 15%; left: 8%; width: 80px; height: 80px; background: linear-gradient(45deg, rgba(27, 38, 196, 0.08), transparent); border-radius: 50%; filter: blur(25px);"></div>
+      
+      <div class="container-max grid gap-16 lg:grid-cols-2 items-start">
+        <div class="orcamento-content">
+          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+            <div style="width: 8px; height: 8px; background: #1b26c4; border-radius: 50%; animation: pulseDot 2s infinite;"></div>
+            <span class="tag-dashed" style="background: linear-gradient(135deg, #1b26c4, #2563eb); color: #fff; border: 0; font-weight: 600; letter-spacing: 0.1em;">ORÇAMENTO</span>
+          </div>
+          
+          <h2 id="orcamento-title" class="section-title" style="font-size: 2.8rem; line-height: 1.15; margin-bottom: 1.5rem; text-align: left;">
+            <span style="display: block; background: linear-gradient(135deg, #1b26c4, #2563eb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700;">Solicite um</span>
+            <span style="display: block; background: linear-gradient(135deg, #1b26c4, #2563eb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700; margin-top: -0.2rem;">orçamento</span>
+            <span style="display: inline-block; font-size: 1.3rem; color: #64748b; font-weight: 500; margin-top: 0.3rem; position: relative;">
+              <em style="font-style: italic; opacity: 0.8;">personalizado</em>
+              <div style="position: absolute; bottom: -5px; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, #1b26c4, transparent); border-radius: 1px;"></div>
+            </span>
+          </h2>
+          
+          <p style="max-width: 45ch; font-size: 1.1rem; color: #475569; margin: 0 0 2.5rem; line-height: 1.6;">
+            Envie detalhes do projeto. Retornamos em até <strong style="color: #1b26c4;">24h</strong> com proposta personalizada.
+          </p>
+          
+          <!-- Benefícios com ícones -->
+          <div class="orcamento-benefits" style="margin-bottom: 2rem;">
+            <div class="benefit-item" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; padding: 1rem; background: rgba(255, 255, 255, 0.7); border-radius: 12px; border: 1px solid rgba(27, 38, 196, 0.1); transition: all 0.3s ease;">
+              <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #1b26c4, #2563eb); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                <svg width="24" height="24" fill="white" viewBox="0 0 24 24">
+                  <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v9z"/>
+                </svg>
+              </div>
+              <div>
+                <h4 style="margin: 0 0 0.3rem; font-size: 1rem; font-weight: 600; color: #1e293b;">Atendimento direto e consultivo</h4>
+                <p style="margin: 0; font-size: 0.9rem; color: #64748b;">Conversamos pessoalmente sobre suas necessidades</p>
+              </div>
+            </div>
+            
+            <div class="benefit-item" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; padding: 1rem; background: rgba(255, 255, 255, 0.7); border-radius: 12px; border: 1px solid rgba(27, 38, 196, 0.1); transition: all 0.3s ease;">
+              <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #1b26c4, #2563eb); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                <svg width="24" height="24" fill="white" viewBox="0 0 24 24">
+                  <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+                </svg>
+              </div>
+              <div>
+                <h4 style="margin: 0 0 0.3rem; font-size: 1rem; font-weight: 600; color: #1e293b;">Envio de arquivos facilitado</h4>
+                <p style="margin: 0; font-size: 0.9rem; color: #64748b;">Logos, referências e ideias em formatos diversos</p>
+              </div>
+            </div>
+            
+            <div class="benefit-item" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; padding: 1rem; background: rgba(255, 255, 255, 0.7); border-radius: 12px; border: 1px solid rgba(27, 38, 196, 0.1); transition: all 0.3s ease;">
+              <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #1b26c4, #2563eb); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                <svg width="24" height="24" fill="white" viewBox="0 0 24 24">
+                  <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,17L7,12L8.41,10.59L12,14.17L15.59,10.59L17,12L12,17Z"/>
+                </svg>
+              </div>
+              <div>
+                <h4 style="margin: 0 0 0.3rem; font-size: 1rem; font-weight: 600; color: #1e293b;">Transparência total</h4>
+                <p style="margin: 0; font-size: 0.9rem; color: #64748b;">Respostas claras sobre prazos e valores</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Garantia destacada -->
+          <div style="background: linear-gradient(135deg, rgba(27, 38, 196, 0.05), rgba(37, 99, 235, 0.03)); border: 2px solid rgba(27, 38, 196, 0.15); padding: 1.5rem; border-radius: 16px; position: relative; overflow: hidden;">
+            <div style="position: absolute; top: -10px; right: -10px; width: 60px; height: 60px; background: linear-gradient(45deg, rgba(27, 38, 196, 0.1), transparent); border-radius: 50%;"></div>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <div style="width: 56px; height: 56px; background: linear-gradient(135deg, #10b981, #059669); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                <svg width="28" height="28" fill="white" viewBox="0 0 24 24">
+                  <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M10,17L6,13L7.41,11.59L10,14.17L16.59,7.58L18,9L10,17Z"/>
+                </svg>
+              </div>
+              <div>
+                <h4 style="margin: 0 0 0.5rem; font-size: 1.1rem; font-weight: 700; color: #1e293b;">Garantia Zaptex</h4>
+                <p style="margin: 0; font-size: 0.95rem; color: #475569; font-weight: 500;">Qualidade, prazo e consistência de cor garantidos</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Formulário melhorado -->
+        <div class="orcamento-form" style="background: rgba(255, 255, 255, 0.9); border-radius: 20px; padding: 2.5rem; border: 1px solid rgba(27, 38, 196, 0.1); backdrop-filter: blur(10px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);">
+          <div style="text-align: center; margin-bottom: 2rem;">
+            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #1b26c4, #2563eb); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
+              <svg width="30" height="30" fill="white" viewBox="0 0 24 24">
+                <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C0,4.89 21.1,4 20,4Z"/>
+              </svg>
+            </div>
+            <h3 style="margin: 0 0 0.5rem; font-size: 1.4rem; color: #1e293b; font-weight: 700;">Vamos conversar?</h3>
+            <p style="margin: 0; color: #64748b; font-size: 0.9rem;">Preencha os dados e entraremos em contato</p>
+          </div>
+          
+          <form class="space-y-6" id="orcamentoForm" aria-label="Formulário de orçamento" style="display: grid; gap: 1.5rem;">
+            <div class="grid gap-5 md:grid-cols-2">
+              <div class="form-group">
+                <label for="nome" style="font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; display: block; margin: 0 0 0.5rem; color: #374151;">Nome *</label>
+                <input id="nome" name="nome" required class="input" placeholder="Seu nome completo" style="width: 100%; padding: 0.9rem 1.2rem; border: 2px solid #e5e7eb; border-radius: 12px; font-size: 0.95rem; transition: all 0.3s ease; background: #fff;">
+              </div>
+              <div class="form-group">
+                <label for="telefone" style="font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; display: block; margin: 0 0 0.5rem; color: #374151;">Telefone *</label>
+                <input id="telefone" name="telefone" required class="input" placeholder="(31) 99999-9999" style="width: 100%; padding: 0.9rem 1.2rem; border: 2px solid #e5e7eb; border-radius: 12px; font-size: 0.95rem; transition: all 0.3s ease; background: #fff;">
+              </div>
+              <div class="form-group">
+                <label for="email" style="font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; display: block; margin: 0 0 0.5rem; color: #374151;">Email *</label>
+                <input id="email" name="email" type="email" required class="input" placeholder="voce@empresa.com" style="width: 100%; padding: 0.9rem 1.2rem; border: 2px solid #e5e7eb; border-radius: 12px; font-size: 0.95rem; transition: all 0.3s ease; background: #fff;">
+              </div>
+              <div class="form-group">
+                <label for="empresa" style="font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; display: block; margin: 0 0 0.5rem; color: #374151;">Empresa</label>
+                <input id="empresa" name="empresa" class="input" placeholder="Nome da empresa (opcional)" style="width: 100%; padding: 0.9rem 1.2rem; border: 2px solid #e5e7eb; border-radius: 12px; font-size: 0.95rem; transition: all 0.3s ease; background: #fff;">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="mensagem" style="font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; display: block; margin: 0 0 0.5rem; color: #374151;">Detalhes do projeto *</label>
+              <textarea id="mensagem" name="mensagem" rows="5" required class="input" placeholder="Conte-nos sobre quantidade, prazos, tipo de peça, cores desejadas..." style="width: 100%; padding: 1rem 1.2rem; border: 2px solid #e5e7eb; border-radius: 12px; font-size: 0.95rem; transition: all 0.3s ease; background: #fff; resize: vertical; min-height: 120px;"></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1rem; padding: 1.2rem 2rem; border-radius: 12px; background: linear-gradient(135deg, #1b26c4, #2563eb); border: none; color: white; font-weight: 600; cursor: pointer; transition: all 0.3s ease; position: relative; overflow: hidden;">
+              <span style="position: relative; z-index: 2;">Enviar solicitação</span>
+              <div style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transition: left 0.6s ease;"></div>
+            </button>
+            
+            <div id="formStatus" style="font-size: 0.85rem; color: #1b26c4; font-weight: 500; text-align: center;"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contato" class="section" style="padding-top:3.5rem;background:#eef2f6;" aria-labelledby="footer-title">
+    <div class="container-max grid gap-12 md:grid-cols-4">
+      <div style="display:grid;gap:1rem;">
+        <img src="assets/images/Zaptex logo color.png" alt="ZapTex" class="h-10 w-auto" />
+        <p style="font-size:.8rem;color:#4a5663;margin:0;">R. Diamante, 1100 - Contagem - MG</p>
+        <p style="font-size:.8rem;margin:0;"><a href="tel:+553100000000" style="color:#1b26c4;">(31) 0000-0000</a></p>
+      </div>
+      <div><h3 class="footer-title" id="footer-title">Links</h3><ul style="margin:0;padding:0;list-style:none;display:grid;gap:.45rem;font-size:.78rem;"><li><a href="#inicio" style="color:#2f3a47;">Início</a></li><li><a href="#sobre" style="color:#2f3a47;">Sobre</a></li><li><a href="#produtos" style="color:#2f3a47;">Produtos</a></li><li><a href="#segmentos" style="color:#2f3a47;">Segmentos</a></li><li><a href="#orcamento" style="color:#2f3a47;">Orçamento</a></li></ul></div>
+      <div><h3 class="footer-title">Redes</h3><ul style="margin:0;padding:0;list-style:none;display:grid;gap:.45rem;font-size:.78rem;"><li><a href="https://www.instagram.com/zaptex_personalizados/" target="_blank" rel="noopener" style="color:#1b26c4;">Instagram</a></li><li><a href="https://www.linkedin.com/company/107884450/" target="_blank" rel="noopener" style="color:#1b26c4;">LinkedIn</a></li></ul></div>
+      <div><h3 class="footer-title">Legal</h3><ul style="margin:0;padding:0;list-style:none;display:grid;gap:.45rem;font-size:.78rem;"><li><a href="#" style="color:#2f3a47;">Termos de uso</a></li><li><a href="#" style="color:#2f3a47;">Política de privacidade</a></li></ul></div>
+    </div>
+    <div style="margin-top:2.5rem;border-top:1px solid #d5dbe3;text-align:center;font-size:.65rem;color:#4a5663;padding:1.25rem 0;">© <span id="year"></span> ZapTex. Todos os direitos reservados.</div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent=new Date().getFullYear();
+  (function(){const bg=document.querySelector('.hero-bg-anim');if(!bg)return;let active=false;function go(e){if(!active)return;const x=(e.clientX/window.innerWidth)-.5;const y=(e.clientY/window.innerHeight)-.5;bg.style.transform=`scale(1.09) translate(${x*-5}px,${y*-3.5}px)`;}bg.addEventListener('animationend',()=>{active=true;});window.addEventListener('mousemove',go,{passive:true});})();
+    document.getElementById('orcamentoForm').addEventListener('submit',e=>{e.preventDefault();const st=document.getElementById('formStatus');st.textContent='Enviado! Retornaremos em breve.';setTimeout(()=>st.textContent='',5000);e.target.reset();});
+  // Header transparency -> solid on scroll
+  (function(){const header=document.getElementById('siteHeader');const hero=document.querySelector('.hero');if(!header||!hero)return;function evaluate(){const h=hero.getBoundingClientRect();const passed=window.scrollY> (h.height*0.55);header.classList.toggle('nav-solid',passed);}evaluate();window.addEventListener('scroll',evaluate,{passive:true});window.addEventListener('resize',evaluate);})();
+  
+  // Sistema de modal de produtos
+  const productImages = {
+    uniformes: [
+      // Aventais profissionais
+      'assets/images/mockups/Mockups/Avental/AVENTAL_PERSONALIZADOS_GRADE 01.jpg',
+      'assets/images/mockups/Mockups/Avental/AVENTAL_PERSONALIZADOS_GRADE 05.jpg',
+      'assets/images/mockups/Mockups/Avental/AVENTAL_PERSONALIZADOS_GRADE 15.jpg',
+      'assets/images/mockups/Mockups/Avental/AVENTAL_PERSONALIZADOS_GRADE 25.jpg'
+    ],
+    sports: [
+      // Camisas esportivas
+      'assets/images/mockups/Mockups/Camisas, Abadás, Shorts e Coletes/Camisas/Simples/CAMISA DRY FIT-MANGA CURTA - MOTO CROSS - GOLA DETALHADA.jpg',
+      'assets/images/mockups/Mockups/Camisas, Abadás, Shorts e Coletes/Camisas/Simples/CAMISA DRY FIT-MANGA CURTA - MOTO CROSS - GOLA EM V.jpg',
+      'assets/images/mockups/Mockups/Camisas, Abadás, Shorts e Coletes/Camisas/Simples/CAMISA DRY FIT-MANGA CURTA - MOTO CROSS - GOLA SIMPLES.jpg',
+      // Abadás esportivos
+      'assets/images/mockups/Mockups/Camisas, Abadás, Shorts e Coletes/Abadás/Abada dryfit 1.jpg',
+      'assets/images/mockups/Mockups/Camisas, Abadás, Shorts e Coletes/Abadás/Abada dryfit 2.jpg',
+      'assets/images/mockups/Mockups/Camisas, Abadás, Shorts e Coletes/Abadás/CAMISA DRY FIT -ABADAS-REGATA-MOCKUP-CARNAVAL 01.jpg',
+      'assets/images/mockups/Mockups/Camisas, Abadás, Shorts e Coletes/Abadás/CAMISA DRY FIT -ABADAS-REGATA-MOCKUP-CARNAVAL 02.jpg',
+      // Coletes esportivos
+      'assets/images/mockups/Mockups/Camisas, Abadás, Shorts e Coletes/Coletes/COLETE DRYFIT-DUPLA FACE-SEM BOLSO-MOCKUP 01.jpg',
+      'assets/images/mockups/Mockups/Camisas, Abadás, Shorts e Coletes/Coletes/COLETE DRYFIT-DUPLA FACE-SEM BOLSO-MOCKUP 02.jpg',
+      'assets/images/mockups/Mockups/Camisas, Abadás, Shorts e Coletes/Coletes/COLETE DRYFIT-DUPLA FACE-SEM BOLSO-PESCARIA-MOCKUP 01.jpg',
+      // Croppeds esportivos
+      'assets/images/mockups/Mockups/Croppeds (Arthur)/CROPPED G.jpg',
+      'assets/images/mockups/Mockups/Croppeds (Arthur)/CROPPED GG.jpg',
+      'assets/images/mockups/Mockups/Croppeds (Arthur)/CROPPED M.jpg',
+      'assets/images/mockups/Mockups/Croppeds (Arthur)/CROPPED P.jpg',
+      'assets/images/mockups/Mockups/Croppeds (Arthur)/CROPPED EXG1.jpg',
+      // Regatas com capuz  
+      'assets/images/mockups/Mockups/Regata com Capuz (Arthur)/REGATA COM CAPUZ - G.jpg',
+      'assets/images/mockups/Mockups/Regata com Capuz (Arthur)/REGATA COM CAPUZ - GG.jpg',
+      'assets/images/mockups/Mockups/Regata com Capuz (Arthur)/REGATA COM CAPUZ - m.jpg',
+      'assets/images/mockups/Mockups/Regata com Capuz (Arthur)/REGATA COM CAPUZ - P.jpg'
+    ],
+    eventos: [
+      // Wind Banners
+      'assets/images/mockups/Mockups/Wind Banner (Arthur)/Kit Completo/FACA/WINDBANNER FACA GG_KIT COMPLETO_FRENTE E VERSO.jpg',
+      'assets/images/mockups/Mockups/Wind Banner (Arthur)/Kit Completo/FACA/WINDBANNER FACA G_KIT COMPLETO_FRENTE E VERSO.jpg',
+      'assets/images/mockups/Mockups/Wind Banner (Arthur)/Kit Completo/FACA/WINDBANNER FACA M_KIT COMPLETO_FRENTE E VERSO.jpg',
+      'assets/images/mockups/Mockups/Wind Banner (Arthur)/Kit Completo/FACA/WINDBANNER FACA P_KIT COMPLETO_FRENTE E VERSO.jpg',
+      'assets/images/mockups/Mockups/Wind Banner (Arthur)/Kit Completo/FACA/FACA_APRESENTAÇÃO-12.jpg',
+      'assets/images/mockups/Mockups/Wind Banner (Arthur)/Kit Completo/FACA/FACA_APRESENTAÇÃO-3.jpg',
+      // Bandeiras
+      'assets/images/mockups/Mockups/Bandeiras (Arthur)/1 - BANDEIRAS - CACHARREL - COSTURA LINHA BRANCA OVERLOCK/1000x500/BANDEIRAS-CACHARREL-COSTURA LINHA BRANCA OVERLOCK -1000X500MM-4x0-G1.jpg',
+      'assets/images/mockups/Mockups/Bandeiras (Arthur)/1 - BANDEIRAS - CACHARREL - COSTURA LINHA BRANCA OVERLOCK/1000x500/BANDEIRAS-CACHARREL-COSTURA LINHA BRANCA OVERLOCK -1000X500MM-4x0-G10.jpg',
+      'assets/images/mockups/Mockups/Bandeiras (Arthur)/1 - BANDEIRAS - CACHARREL - COSTURA LINHA BRANCA OVERLOCK/1000x500/BANDEIRAS-CACHARREL-COSTURA LINHA BRANCA OVERLOCK -1000X500MM-4x0-G25.jpg',
+      // Almofadas personalizadas
+      'assets/images/mockups/Mockups/Almofadas/Almofada 01.jpg',
+      'assets/images/mockups/Mockups/Almofadas/Almofada 02.jpg',
+      'assets/images/mockups/Mockups/Almofadas/Almofada 03.jpg',
+      // Capas
+      'assets/images/mockups/Mockups/Almofadas/Capa 01.jpg',
+      'assets/images/mockups/Mockups/Almofadas/Capa 02.jpg',
+      'assets/images/mockups/Mockups/Almofadas/Capa 03.jpg',
+      // X Banner
+      'assets/images/mockups/Mockups/X Banner/X BANNER OU INDOORKIT COMPLETO BANDEIRA E SUPORTE XTECIDO OXFORD-1850X800-4X0-G1.jpg',
+      'assets/images/mockups/Mockups/X Banner/X BANNER OU INDOORKIT COMPLETO BANDEIRA E SUPORTE XTECIDO OXFORD-1850X800-4X0-G3.jpg',
+      'assets/images/mockups/Mockups/X Banner/X BANNER OU INDOORBANDEIRA AVULSATECIDO OXFORD.jpg'
+    ],
+    igreja: [
+      // Desbravadores e ações missionárias
+      'assets/images/mockups/Mockups/Desbravadores.png',
+      'assets/images/mockups/Mockups/ações missionárias.png'
+    ]
+  };
+
+  function openProductModal(category) {
+    const modal = document.getElementById('productModal');
+    const title = document.getElementById('modalTitle');
+    const grid = document.getElementById('productGrid');
+    
+    const titles = {
+      uniformes: 'Linha Uniformes Profissionais',
+      sports: 'Linha Sports & Atléticas', 
+      eventos: 'Linha Eventos & Brindes',
+      igreja: 'Linha Igreja / Desbravadores'
+    };
+    
+    title.textContent = titles[category] || 'Produtos';
+    grid.innerHTML = '<p style="text-align:center;padding:2rem;color:#6b7280;">Carregando produtos...</p>';
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    
+    // Simular carregamento de imagens (você pode implementar lógica real aqui)
+    setTimeout(() => {
+      loadCategoryImages(category, grid);
+    }, 500);
+  }
+
+  // Mapeamento de nomes personalizados para produtos
+  const productNames = {
+    // Uniformes Profissionais
+    'CAMISA DRY FIT-MANGA CURTA - MENINA - GOLA DETALHADA.jpg': 'Camisa Dry Fit Feminina Premium',
+    'CAMISA DRY FIT-MANGA CURTA - MENINO - GOLA DETALHADA.jpg': 'Camisa Dry Fit Masculina Premium',
+    'CAMISA DRY FIT-MANGA CURTA - MENINA - GOLA EM V.jpg': 'Camisa Dry Fit Feminina Gola V',
+    'CAMISA DRY FIT-MANGA CURTA - MENINO - GOLA EM V.jpg': 'Camisa Dry Fit Masculina Gola V',
+    'CAMISA DRY FIT-MANGA CURTA - MENINA - GOLA SIMPLES.jpg': 'Camisa Dry Fit Feminina Clássica',
+    'CAMISA DRY FIT-MANGA CURTA - MENINO - GOLA SIMPLES.jpg': 'Camisa Dry Fit Masculina Clássica',
+    'AVENTAL_PERSONALIZADOS_GRADE 01.jpg': 'Avental Profissional Personalizado',
+    'AVENTAL_PERSONALIZADOS_GRADE 05.jpg': 'Avental Chef Personalizado',
+    'AVENTAL_PERSONALIZADOS_GRADE 15.jpg': 'Avental Industrial Personalizado',
+    'AVENTAL_PERSONALIZADOS_GRADE 25.jpg': 'Avental Premium Personalizado',
+    
+    // Sports & Atléticas
+    'CAMISA DRY FIT-MANGA CURTA - MOTO CROSS - GOLA DETALHADA.jpg': 'Camisa Esportiva Moto Cross Pro',
+    'CAMISA DRY FIT-MANGA CURTA - MOTO CROSS - GOLA EM V.jpg': 'Camisa Esportiva Moto Cross V',
+    'CAMISA DRY FIT-MANGA CURTA - MOTO CROSS - GOLA SIMPLES.jpg': 'Camisa Esportiva Moto Cross',
+    'Abada dryfit 1.jpg': 'Abadá Dry Fit Performance',
+    'Abada dryfit 2.jpg': 'Abadá Dry Fit Comfort',
+    'CAMISA DRY FIT -ABADAS-REGATA-MOCKUP-CARNAVAL 01.jpg': 'Regata Carnaval Personalizada',
+    'CAMISA DRY FIT -ABADAS-REGATA-MOCKUP-CARNAVAL 02.jpg': 'Regata Festa Personalizada',
+    'COLETE DRYFIT-DUPLA FACE-SEM BOLSO-MOCKUP 01.jpg': 'Colete Esportivo Dupla Face',
+    'COLETE DRYFIT-DUPLA FACE-SEM BOLSO-MOCKUP 02.jpg': 'Colete Atlético Premium',
+    'COLETE DRYFIT-DUPLA FACE-SEM BOLSO-PESCARIA-MOCKUP 01.jpg': 'Colete Pesca Personalizado',
+    'CROPPED G.jpg': 'Cropped Esportivo Tamanho G',
+    'CROPPED GG.jpg': 'Cropped Esportivo Tamanho GG',
+    'CROPPED M.jpg': 'Cropped Esportivo Tamanho M',
+    'CROPPED P.jpg': 'Cropped Esportivo Tamanho P',
+    'CROPPED EXG1.jpg': 'Cropped Esportivo Extra Grande',
+    'REGATA COM CAPUZ - G.jpg': 'Regata com Capuz Tamanho G',
+    'REGATA COM CAPUZ - GG.jpg': 'Regata com Capuz Tamanho GG',
+    'REGATA COM CAPUZ - m.jpg': 'Regata com Capuz Tamanho M',
+    'REGATA COM CAPUZ - P.jpg': 'Regata com Capuz Tamanho P',
+    
+    // Eventos & Brindes
+    'WINDBANNER FACA GG_KIT COMPLETO_FRENTE E VERSO.jpg': 'Wind Banner Faca GG - Kit Completo',
+    'WINDBANNER FACA G_KIT COMPLETO_FRENTE E VERSO.jpg': 'Wind Banner Faca G - Kit Completo',
+    'WINDBANNER FACA M_KIT COMPLETO_FRENTE E VERSO.jpg': 'Wind Banner Faca M - Kit Completo',
+    'WINDBANNER FACA P_KIT COMPLETO_FRENTE E VERSO.jpg': 'Wind Banner Faca P - Kit Completo',
+    'FACA_APRESENTAÇÃO-12.jpg': 'Wind Banner Faca - Apresentação Premium',
+    'FACA_APRESENTAÇÃO-3.jpg': 'Wind Banner Faca - Apresentação Clássica',
+    'BANDEIRAS-CACHARREL-COSTURA LINHA BRANCA OVERLOCK -1000X500MM-4x0-G1.jpg': 'Bandeira Cacharrel 100x50cm',
+    'BANDEIRAS-CACHARREL-COSTURA LINHA BRANCA OVERLOCK -1000X500MM-4x0-G10.jpg': 'Bandeira Cacharrel Premium 100x50cm',
+    'BANDEIRAS-CACHARREL-COSTURA LINHA BRANCA OVERLOCK -1000X500MM-4x0-G25.jpg': 'Bandeira Cacharrel Deluxe 100x50cm',
+    'Almofada 01.jpg': 'Almofada Personalizada Clássica',
+    'Almofada 02.jpg': 'Almofada Personalizada Premium',
+    'Almofada 03.jpg': 'Almofada Personalizada Deluxe',
+    'Capa 01.jpg': 'Capa Personalizada Elegante',
+    'Capa 02.jpg': 'Capa Personalizada Moderna',
+    'Capa 03.jpg': 'Capa Personalizada Exclusiva',
+    'X BANNER OU INDOORKIT COMPLETO BANDEIRA E SUPORTE XTECIDO OXFORD-1850X800-4X0-G1.jpg': 'X-Banner Kit Completo 185x80cm',
+    'X BANNER OU INDOORKIT COMPLETO BANDEIRA E SUPORTE XTECIDO OXFORD-1850X800-4X0-G3.jpg': 'X-Banner Premium Kit Completo',
+    'X BANNER OU INDOORBANDEIRA AVULSATECIDO OXFORD.jpg': 'X-Banner Tecido Oxford',
+    
+    // Igreja / Desbravadores
+    'Desbravadores.png': 'Uniformes Desbravadores Personalizados',
+    'ações missionárias.png': 'Camisas Ações Missionárias'
+  };
+
+  function loadCategoryImages(category, container) {
+    const images = productImages[category] || [];
+    
+    if (images.length === 0) {
+      container.innerHTML = '<p style="text-align:center;padding:2rem;color:#6b7280;">Nenhum produto encontrado para esta categoria.</p>';
+      return;
+    }
+    
+    let html = '';
+    images.forEach((imgPath, index) => {
+      // Extrair nome do arquivo
+      const fileName = imgPath.split('/').pop();
+      
+      // Usar nome personalizado se disponível, senão usar nome padrão melhorado
+      let productName = productNames[fileName];
+      
+      if (!productName) {
+        productName = fileName.replace(/\.(jpg|jpeg|png|webp)$/i, '')
+          .replace(/_/g, ' ')
+          .replace(/-/g, ' ')
+          .split(' ')
+          .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+          .join(' ');
+        
+        // Adicionar "Personalizado" no final se não tiver
+        if (!productName.toLowerCase().includes('personalizado')) {
+          productName += ' Personalizado';
+        }
+      }
+      
+      html += `
+        <div class="product-item">
+          <img src="${imgPath}" alt="${productName}" loading="lazy" 
+               onerror="this.src='assets/images/mockups/placeholder.jpg'; this.onerror=null;"
+               onload="this.style.opacity='1';" style="opacity:0;transition:opacity 0.3s;">
+          <div class="product-name">${productName}</div>
+        </div>
+      `;
+    });
+    
+    container.innerHTML = html;
+    
+    // Log para debug
+    console.log(`Carregando ${images.length} imagens para categoria: ${category}`);
+  }
+
+  function closeProductModal() {
+    const modal = document.getElementById('productModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // Adicionar eventos de clique aos cards
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.line-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const category = card.dataset.category;
+        if (category) {
+          openProductModal(category);
+        }
+      });
+    });
+    
+    // Fechar modal clicando fora
+    document.getElementById('productModal').addEventListener('click', (e) => {
+      if (e.target.id === 'productModal') {
+        closeProductModal();
+      }
+    });
+    
+    // Funcionalidade do Acordeão
+    document.querySelectorAll('.accordion-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const accordionItem = header.parentElement;
+        const isActive = accordionItem.classList.contains('active');
+        
+        // Fechar todos os outros acordeões
+        document.querySelectorAll('.accordion-item').forEach(item => {
+          if (item !== accordionItem) {
+            item.classList.remove('active');
+          }
+        });
+        
+        // Toggle do acordeão atual
+        if (isActive) {
+          accordionItem.classList.remove('active');
+        } else {
+          accordionItem.classList.add('active');
+        }
+      });
+    });
+    
+    // Efeito Parallax na Hero - Versão Simplificada
+    function initParallax() {
+      const heroBackground = document.querySelector('.hero__bg');
+      const heroContent = document.querySelector('.hero__content');
+      
+      if (!heroBackground) return;
+      
+      window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const heroHeight = window.innerHeight;
+        
+        // Só aplicar parallax nos primeiros 100vh de scroll
+        if (scrolled < heroHeight) {
+          // Parallax do background (move mais devagar)
+          const bgParallax = scrolled * 0.3;
+          heroBackground.style.transform = `translateY(${bgParallax}px) scale(1.05)`;
+          
+          // Parallax do conteúdo (move um pouco mais devagar)
+          if (heroContent) {
+            const contentParallax = scrolled * 0.15;
+            heroContent.style.transform = `translateY(${contentParallax}px)`;
+          }
+        }
+      }, { passive: true });
+    }
+    
+    // Inicializar parallax
+    initParallax();
+    
+    // Efeito de reveal nas seções
+    function initScrollReveal() {
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -100px 0px',
+        threshold: 0.1
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('reveal-active');
+          }
+        });
+      }, observerOptions);
+      
+      // Observar elementos de todas as seções
+      const revealSelectors = [
+        '.sobre-intro', '.sobre-gallery', '.sobre-badge', '.sobre-heading', '.sobre-bullets li',
+        '.produtos-badge', '.produtos-title', '.produtos-subtitle', '.line-card',
+        '.diff-card-premium', '.accordion-item',
+        '#orcamento .container-max > div'
+      ];
+      
+      revealSelectors.forEach(selector => {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach(el => {
+          el.classList.add('reveal-element');
+          observer.observe(el);
+        });
+      });
+      
+      // Observador especial para cards de produto com delay escalonado
+      const productCards = document.querySelectorAll('.line-card');
+      productCards.forEach((card, index) => {
+        card.style.transitionDelay = `${index * 0.1}s`;
+      });
+      
+      // Observador especial para cards de diferenciais
+      const diffCards = document.querySelectorAll('.diff-card-premium');
+      diffCards.forEach((card, index) => {
+        card.style.transitionDelay = `${index * 0.15}s`;
+      });
+      
+      // Observador especial para items do acordeão
+      const accordionItems = document.querySelectorAll('.accordion-item');
+      accordionItems.forEach((item, index) => {
+        item.style.transitionDelay = `${index * 0.12}s`;
+      });
+    }
+    
+    initScrollReveal();
+    
+    // Efeito de cursor dinâmico nas transições
+    function initDynamicCursor() {
+      const cursor = document.createElement('div');
+      cursor.className = 'dynamic-cursor';
+      cursor.innerHTML = '<div class="cursor-dot"></div><div class="cursor-outline"></div>';
+      document.body.appendChild(cursor);
+      
+      let mouseX = 0, mouseY = 0;
+      let cursorX = 0, cursorY = 0;
+      
+      document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      });
+      
+      function animateCursor() {
+        cursorX += (mouseX - cursorX) * 0.1;
+        cursorY += (mouseY - cursorY) * 0.1;
+        cursor.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
+        requestAnimationFrame(animateCursor);
+      }
+      
+      animateCursor();
+      
+      // Efeitos especiais em elementos interativos
+      const interactiveElements = document.querySelectorAll('button, .line-card, .accordion-header, .diff-card-premium');
+      interactiveElements.forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'));
+      });
+    }
+    
+    // initDynamicCursor(); // Comentado para não interferir em dispositivos touch
+  });
+  </script>
+</body>
+</html>
