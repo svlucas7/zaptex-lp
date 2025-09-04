@@ -1,0 +1,17 @@
+# Arquivos com nomes muito longos
+assets/images/mockups/Mockups/
+
+# Node modules
+node_modules/
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+
+# Arquivos de IDE
+.vscode/
+.idea/
+
+# Arquivos temporários
+*.tmp
+*.log

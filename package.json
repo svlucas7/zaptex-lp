@@ -1,0 +1,15 @@
+{
+  "name": "zaptex-lp",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tailwindcss -i ./src/input.css -o ./dist/styles.css --watch",
+    "build": "tailwindcss -i ./src/input.css -o ./dist/styles.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.10",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.41"
+  }
+}

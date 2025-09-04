@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Font face for Ubuntu Medium Italic (brand) - user must host or import externally */
+/* You can replace with a proper @import if using Google Fonts or local file */
+
+@layer base {
+  body { @apply bg-neutral-950 text-neutral-100 font-sans antialiased; }
+  h1,h2,h3,h4 { @apply font-brand font-medium italic tracking-tight; }
+  h1 { @apply font-bold not-italic; }
+  h2,h3,h4 { @apply not-italic; }
+}
+
+@layer components {
+  .btn { @apply inline-flex items-center justify-center font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 disabled:opacity-60 disabled:cursor-not-allowed; }
+  .btn-primary { @apply bg-brand-blue text-white hover:bg-indigo-800; }
+  .btn-secondary { @apply bg-neutral-800 text-neutral-100 hover:bg-neutral-700; }
+  .btn-whats { @apply bg-green-500 text-neutral-900 hover:bg-green-400; }
+  .section { @apply py-20 relative; }
+  .section-title { @apply text-3xl md:text-4xl font-bold mb-8 text-white; }
+  .card { @apply bg-neutral-900/70 border border-neutral-800 rounded-2xl p-6 backdrop-blur shadow-lg; }
+  .tag { @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-brand-blue/10 text-brand-blue border border-brand-blue/30; }
+  .grid-auto { @apply grid gap-6 sm:grid-cols-2 lg:grid-cols-3; }
+  .line-card { @apply card space-y-3; }
+  .line-card h3 { @apply text-sm font-semibold tracking-wide uppercase text-brand-blue; }
+  .diff-item { @apply card text-sm font-medium flex items-start gap-2; }
+  .segment-item { @apply card text-center text-sm font-medium; }
+  .form-field { @apply space-y-1; }
+  .form-field label { @apply text-[11px] uppercase tracking-wider font-semibold text-neutral-400; }
+  .input { @apply w-full rounded-xl bg-neutral-900 border border-neutral-700 px-4 py-3 text-sm focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue placeholder:text-neutral-500; }
+  .footer-title { @apply text-lg font-bold text-white mb-3; }
+  .nav-link { @apply relative font-medium text-sm lg:text-[15px] text-neutral-200 hover:text-white transition; }
+  .nav-link::after { content:""; @apply absolute left-0 -bottom-1 h-0.5 w-0 bg-brand-blue transition-all; }
+  .nav-link:hover::after, .nav-link:focus::after { @apply w-full; }
+  .hero-gradient { @apply bg-[radial-gradient(circle_at_30%_40%,rgba(20,8,143,0.25),transparent_55%),radial-gradient(circle_at_70%_60%,rgba(75,75,77,0.25),transparent_60%),linear-gradient(to_bottom,#07070c,#0d0e17_78%)]; }
+}
+
+@layer utilities {
+  .container-max { @apply w-full max-w-7xl mx-auto px-4 md:px-8; }
+}
