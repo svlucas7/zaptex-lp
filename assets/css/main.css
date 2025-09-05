@@ -45,8 +45,19 @@ img {
 /* Exceção para logo inline - força inline-block */
 .inline-logo,
 .sobre-heading .inline-logo,
-h2 .inline-logo {
+h2 .inline-logo,
+h2.sobre-heading .inline-logo {
   display: inline-block !important;
+  height: 1.4em !important;
+  width: auto !important;
+  max-width: none !important;
+  max-height: 1.4em !important;
+  vertical-align: text-bottom !important;
+  margin: 0 0.0em !important;
+  padding: 0 !important;
+  transform: translateY(0.3em) !important;
+  box-sizing: border-box !important;
+  object-fit: contain !important;
 }
 
 a {
@@ -1824,4 +1835,21 @@ footer {
     justify-content: flex-start !important;
     margin-top: 1.5rem !important;
   }
+}
+
+/* === FORÇA LOGO INLINE - OVERRIDE FINAL === */
+img.inline-logo,
+.sobre-heading img.inline-logo,
+h2.sobre-heading img.inline-logo {
+  display: inline-block !important;
+  height: 1.4em !important;
+  width: auto !important;
+  max-width: none !important;
+  font-size: inherit !important;
+  line-height: 1 !important;
+  vertical-align: text-bottom !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  transform: translateY(0.3em) !important;
 }
