@@ -42,6 +42,13 @@ img {
   height: auto;
 }
 
+/* Exceção para logo inline - força inline-block */
+.inline-logo,
+.sobre-heading .inline-logo,
+h2 .inline-logo {
+  display: inline-block !important;
+}
+
 a {
   text-decoration: none;
 }
@@ -489,14 +496,19 @@ a {
   color: transparent;
 }
 
-.inline-logo {
+.inline-logo,
+.sobre-heading .inline-logo,
+h2 .inline-logo {
   display: inline-block !important;
   height: 1.4em !important;
   width: auto !important;
+  max-width: none !important;
+  max-height: 1.4em !important;
   vertical-align: text-bottom !important;
   margin: 0 0.0em !important;
   padding: 0 !important;
   transform: translateY(0.3em) !important;
+  box-sizing: border-box !important;
 }
 
 .sobre-intro p {
