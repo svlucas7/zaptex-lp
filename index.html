@@ -7,6 +7,8 @@
   <meta name="description" content="Zaptex - Soluções têxteis personalizadas para empresas, eventos, igrejas, atléticas e muito mais." />
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <!-- Preload da imagem crítica da hero para carregamento mais rápido -->
+  <link rel="preload" as="image" href="./assets/images/hero-section-banner10.webp" fetchpriority="high"/>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Ubuntu:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet"/>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>tailwind.config={theme:{extend:{fontFamily:{brand:['Ubuntu','Poppins','ui-sans-serif','system-ui'],sans:['Poppins','ui-sans-serif','system-ui']},colors:{brand:{blue:'#1b26c4'}}}}};</script>
@@ -27,7 +29,34 @@
     @keyframes fadeUp{0%{opacity:0;transform:translateY(28px);}100%{opacity:1;transform:translateY(0);}}
     @keyframes pulseDot{0%,100%{opacity:.5}50%{opacity:1}}
     .hero{min-height:90vh;display:flex;align-items:center;position:relative;overflow:hidden;}
-  .hero__bg{position:absolute;top:-6%;left:0;right:0;bottom:-10%;background:url('./assets/images/hero-section-banner.png') center/cover no-repeat;will-change:transform;filter:brightness(.9) contrast(1.05) saturate(1.05);transform-origin:center center;}
+  /* Otimização: fallback de cor sólida enquanto a imagem carrega */
+  .hero__bg{
+    position:absolute;
+    top:-6%;
+    left:0;
+    right:0;
+    bottom:-10%;
+    background:linear-gradient(135deg, #1b26c4 0%, #2563eb 50%, #1e40af 100%);
+    background-image:url('./assets/images/hero-section-banner10.webp');
+    background-position:center;
+    background-size:cover;
+    background-repeat:no-repeat;
+    will-change:transform;
+    filter:brightness(.9) contrast(1.05) saturate(1.05);
+    transform-origin:center center;
+    opacity:1;
+    transition:all .6s ease-in-out;
+    animation:heroSkeletonPulse 2s ease-in-out infinite alternate;
+  }
+  .hero__bg.loaded{
+    animation:none;
+  }
+  
+  /* Animação de skeleton loader para a hero */
+  @keyframes heroSkeletonPulse {
+    0% { opacity: 0.7; }
+    100% { opacity: 1; }
+  }
   @media (min-width:1600px){.hero__bg{top:-8%;bottom:-14%;}}
     .hero__overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.75));}
     
@@ -1447,7 +1476,7 @@
       <div><h3 class="footer-title">Redes</h3><ul style="margin:0;padding:0;list-style:none;display:grid;gap:.45rem;font-size:.78rem;"><li><a href="https://www.instagram.com/zaptex_personalizados/" target="_blank" rel="noopener" style="color:#1b26c4;">Instagram</a></li><li><a href="https://www.linkedin.com/company/107884450/" target="_blank" rel="noopener" style="color:#1b26c4;">LinkedIn</a></li></ul></div>
       <div><h3 class="footer-title">Legal</h3><ul style="margin:0;padding:0;list-style:none;display:grid;gap:.45rem;font-size:.78rem;"><li><a href="#" style="color:#2f3a47;">Termos de uso</a></li><li><a href="#" style="color:#2f3a47;">Política de privacidade</a></li></ul></div>
     </div>
-    <div style="margin-top:2.5rem;border-top:1px solid #d5dbe3;text-align:center;font-size:.65rem;color:#4a5663;padding:1.25rem 0;">© <span id="year"></span> ZapTex. Todos os direitos reservados.</div>
+    <div style="margin-top:2.5rem;border-top:1px solid #d5dbe3;text-align:center;font-size:.65rem;color:#4a5663;padding:1.25rem 0;">© <span id="year"></span> Zaptex. Todos os direitos reservados.</div>
   </footer>
 
   <script>
@@ -1727,6 +1756,48 @@
     
     // Inicializar parallax
     initParallax();
+    
+    // Otimização de carregamento da imagem da hero
+    function optimizeHeroImageLoad() {
+      const heroBackground = document.querySelector('.hero__bg');
+      if (!heroBackground) return;
+      
+      // Criar uma nova imagem para precarregar
+      const heroImage = new Image();
+      
+      // Timeout para fallback caso a imagem demore muito
+      const loadTimeout = setTimeout(() => {
+        heroBackground.classList.add('loaded');
+      }, 3000); // 3 segundos timeout
+      
+      heroImage.onload = function() {
+        clearTimeout(loadTimeout);
+        // Quando a imagem carregar, parar a animação de skeleton
+        heroBackground.classList.add('loaded');
+      };
+      
+      heroImage.onerror = function() {
+        clearTimeout(loadTimeout);
+        // Em caso de erro, ainda mostrar o background e parar animação
+        heroBackground.classList.add('loaded');
+      };
+      
+      // Definir a src para começar o carregamento
+      heroImage.src = './assets/images/hero-section-banner10.webp';
+      
+      // Se a imagem já estiver carregada (cache), aplicar imediatamente
+      if (heroImage.complete) {
+        clearTimeout(loadTimeout);
+        heroBackground.classList.add('loaded');
+      }
+    }
+    
+    // Inicializar carregamento otimizado da hero no DOM ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', optimizeHeroImageLoad);
+    } else {
+      optimizeHeroImageLoad();
+    }
     
     // Efeito de reveal nas seções
     function initScrollReveal() {
