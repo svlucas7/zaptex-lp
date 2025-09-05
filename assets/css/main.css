@@ -666,6 +666,7 @@ a {
   display: grid;
   gap: 2rem;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  perspective: 1000px; /* Adiciona perspectiva 3D ao container */
 }
 
 @media(min-width: 768px) {
@@ -708,11 +709,13 @@ a {
   transition: all .3s ease;
   position: relative;
   overflow: hidden;
+  transform-style: preserve-3d;
+  perspective: 1000px;
 }
 
 .line-card-premium:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, .15);
+  /* O transform será controlado pelo JavaScript */
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, .25);
   border-color: #1b26c4;
 }
 

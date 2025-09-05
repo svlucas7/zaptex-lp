@@ -361,8 +361,8 @@ document.addEventListener('DOMContentLoaded', () => {
   function initScrollReveal() {
     const observerOptions = {
       root: null,
-      rootMargin: '0px 0px -100px 0px',
-      threshold: 0.1
+      rootMargin: '0px 0px -50px 0px', // Reduzido para detectar mais cedo
+      threshold: 0.2 // Aumentado para melhor detecção
     };
     
     const observer = new IntersectionObserver((entries) => {
@@ -392,7 +392,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Observador especial para cards de produto com delay escalonado
     const productCards = document.querySelectorAll('.line-card');
     productCards.forEach((card, index) => {
-      card.style.transitionDelay = `${index * 0.1}s`;
+      card.style.transitionDelay = `${index * 0.08}s`; // Reduzido de 0.1s para 0.08s
     });
     
     // Observador especial para cards de diferenciais
@@ -443,6 +443,41 @@ document.addEventListener('DOMContentLoaded', () => {
   // }
   
   // initDynamicCursor(); // Comentado para não interferir em dispositivos touch
+  
+  // === EFEITO TILT NOS CARDS === //
+  function initTiltEffect() {
+    const cards = document.querySelectorAll('.line-card-premium');
+    
+    cards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        
+        const mouseX = e.clientX - centerX;
+        const mouseY = e.clientY - centerY;
+        
+        const rotateX = (mouseY / rect.height) * -10; // Máximo 10 graus
+        const rotateY = (mouseX / rect.width) * 10;   // Máximo 10 graus
+        
+        card.style.transform = `translateY(-8px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'translateY(0) rotateX(0) rotateY(0)';
+      });
+      
+      card.addEventListener('mouseenter', () => {
+        card.style.transition = 'transform 0.1s ease-out';
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.transition = 'all 0.3s ease';
+      });
+    });
+  }
+  
+  initTiltEffect();
 });
 
 // === FUNÇÕES GLOBAIS === //
