@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
   <!-- SEO Meta Tags -->
   <title>ZapTex - Personalização Têxtil Premium | Uniformes e Produtos Personalizados</title>
@@ -42,12 +43,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <!-- Preload da imagem crítica da hero para carregamento mais rápido -->
-  <link rel="preload" as="image" href="./assets/images/hero-section-banner10.webp" fetchpriority="high"/>
+  <link rel="preload" as="image" href="assets/images/hero-section-banner10.webp" fetchpriority="high"/>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Ubuntu:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet"/>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>tailwind.config={theme:{extend:{fontFamily:{brand:['Ubuntu','Poppins','ui-sans-serif','system-ui'],sans:['Poppins','ui-sans-serif','system-ui']},colors:{brand:{blue:'#1b26c4'}}}}};</script>
   
-  <!-- CSS Principal -->
+  <!-- CSS Principal - Carregado após Tailwind para ter precedência -->
   <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
