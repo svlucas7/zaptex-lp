@@ -1,17 +1,52 @@
-# Arquivos com nomes muito longos na pasta de bandeiras
-assets/images/mockups/Mockups/Bandeiras*/
-
-# Node modules
+# Dependencies
 node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# Arquivos de sistema
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build outputs
+dist/
+build/
+
+# OS generated files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
 
-# Arquivos de IDE
+# Editor directories and files
 .vscode/
 .idea/
+*.swp
+*.swo
+*~
 
-# Arquivos temporários
-*.tmp
+# Logs
+logs
 *.log
+*.tmp
+
+# Cache
+.cache/
+.parcel-cache/
+
+# Temporary files
+*.temp
+*.bak
+*.backup
+
+# Local Netlify folder
+.netlify/
+
+# Arquivos com nomes muito longos na pasta de bandeiras (projeto específico)
+assets/images/mockups/Mockups/Bandeiras*/
