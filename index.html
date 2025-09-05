@@ -1728,30 +1728,36 @@
       });
     });
     
-    // Efeito Parallax na Hero - Versão Simplificada
+    // Efeito Parallax na Hero - Desabilitado para melhor performance
     function initParallax() {
       const heroBackground = document.querySelector('.hero__bg');
       const heroContent = document.querySelector('.hero__content');
       
       if (!heroBackground) return;
       
+      // Remover qualquer transform que possa estar afetando a posição
+      heroBackground.style.transform = 'scale(1.05)';
+      if (heroContent) {
+        heroContent.style.transform = 'none';
+      }
+      
+      // Comentando o parallax para evitar movimento indesejado
+      /*
       window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
         const heroHeight = window.innerHeight;
         
-        // Só aplicar parallax nos primeiros 100vh de scroll
         if (scrolled < heroHeight) {
-          // Parallax do background (move mais devagar)
-          const bgParallax = scrolled * 0.3;
+          const bgParallax = scrolled * -0.5;
           heroBackground.style.transform = `translateY(${bgParallax}px) scale(1.05)`;
           
-          // Parallax do conteúdo (move um pouco mais devagar)
           if (heroContent) {
-            const contentParallax = scrolled * 0.15;
+            const contentParallax = scrolled * -0.1;
             heroContent.style.transform = `translateY(${contentParallax}px)`;
           }
         }
       }, { passive: true });
+      */
     }
     
     // Inicializar parallax
