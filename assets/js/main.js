@@ -1,5 +1,56 @@
-/* ============================================
-   ZapTex Landing Page - JavaScript Principal
+/* ==================================// === HEADER DINÂMICO === //
+(function() {
+  const header = document.getElementById('siteHeader');
+  const hero = document.querySelector('.hero');
+  if (!header || !hero) return;
+  
+  let lastScroll = 0;
+  let ticking = false;
+  
+  function updateHeader() {
+    const scrollY = window.scrollY;
+    const heroHeight = hero.getBoundingClientRect().height;
+    const scrollProgress = Math.min(scrollY / (heroHeight * 0.6), 1);
+    
+    // Estados do header baseados no scroll
+    const isScrolled = scrollY > 50;
+    const isPastHero = scrollY > (heroHeight * 0.55);
+    const isScrollingUp = scrollY < lastScroll;
+    const isAtTop = scrollY < 10;
+    
+    // Aplica classes dinâmicas
+    header.classList.toggle('nav-solid', isPastHero);
+    header.classList.toggle('nav-scrolled', isScrolled && isPastHero);
+    
+    // Efeito de hide/show no scroll
+    if (scrollY > 100) {
+      if (isScrollingUp || isAtTop) {
+        header.style.transform = 'translateY(0)';
+        header.style.opacity = '1';
+      } else if (scrollY > lastScroll + 50) {
+        header.style.transform = 'translateY(-100%)';
+        header.style.opacity = '0.95';
+      }
+    } else {
+      header.style.transform = 'translateY(0)';
+      header.style.opacity = '1';
+    }
+    
+    lastScroll = scrollY;
+    ticking = false;
+  }
+  
+  function requestTick() {
+    if (!ticking) {
+      requestAnimationFrame(updateHeader);
+      ticking = true;
+    }
+  }
+  
+  updateHeader();
+  window.addEventListener('scroll', requestTick, { passive: true });
+  window.addEventListener('resize', updateHeader);
+})();apTex Landing Page - JavaScript Principal
    ============================================ */
 
 // === CONFIGURAÇÃO INICIAL === //
