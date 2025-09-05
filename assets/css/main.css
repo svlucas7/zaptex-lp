@@ -725,11 +725,14 @@ a {
   height: 4px;
   background: linear-gradient(135deg, #1b26c4, #2563eb);
   opacity: 0;
-  transition: opacity .3s ease;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: all .3s ease; /* Transição rápida apenas no hover */
 }
 
 .line-card-premium:hover::before {
   opacity: 1;
+  transform: scaleX(1);
 }
 
 .card-figure {
