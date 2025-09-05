@@ -531,6 +531,97 @@ document.addEventListener('DOMContentLoaded', () => {
   initTiltEffect();
 });
 
+// === VIDEO BACKGROUND FALLBACK === //
+document.addEventListener('DOMContentLoaded', function() {
+  const video = document.getElementById('heroVideo');
+  const fallback = document.getElementById('videoFallback');
+  
+  if (video && fallback) {
+    let videoLoaded = false;
+    let playAttempted = false;
+    
+    // Timeout de segurança - se o vídeo não carregar em 5 segundos, usa fallback
+    const fallbackTimeout = setTimeout(() => {
+      if (!videoLoaded) {
+        console.log('Video timeout - usando fallback');
+        activateFallback();
+      }
+    }, 5000);
+    
+    // Função para ativar o fallback
+    function activateFallback() {
+      video.style.display = 'none';
+      fallback.style.display = 'block';
+    }
+    
+    // Quando o vídeo carrega os metadados
+    video.addEventListener('loadedmetadata', function() {
+      console.log('Video metadata loaded');
+      clearTimeout(fallbackTimeout);
+      
+      // Tenta reproduzir o vídeo
+      const playPromise = video.play();
+      
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            console.log('Video playing successfully');
+            videoLoaded = true;
+            playAttempted = true;
+          })
+          .catch((error) => {
+            console.warn('Video autoplay failed:', error);
+            activateFallback();
+          });
+      }
+    });
+    
+    // Se o vídeo conseguir carregar dados
+    video.addEventListener('canplaythrough', function() {
+      videoLoaded = true;
+      if (!playAttempted) {
+        video.play().catch(() => {
+          console.warn('Video play failed after canplaythrough');
+          activateFallback();
+        });
+        playAttempted = true;
+      }
+    });
+    
+    // Se houver erro no carregamento
+    video.addEventListener('error', function(e) {
+      console.error('Video error:', e);
+      activateFallback();
+    });
+    
+    // Se o vídeo falhar ao carregar
+    video.addEventListener('abort', function() {
+      console.warn('Video loading aborted');
+      activateFallback();
+    });
+    
+    // Detecta se está em dispositivo com pouca largura de banda
+    if ('connection' in navigator) {
+      const connection = navigator.connection;
+      if (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g') {
+        console.log('Slow connection detected - using fallback');
+        activateFallback();
+      }
+    }
+    
+    // Para dispositivos móveis com economia de dados
+    if ('serviceWorker' in navigator && 'storage' in navigator && 'estimate' in navigator.storage) {
+      navigator.storage.estimate().then(estimate => {
+        const availableSpace = estimate.quota - estimate.usage;
+        if (availableSpace < 50 * 1024 * 1024) { // Menos de 50MB disponível
+          console.log('Low storage - using fallback');
+          activateFallback();
+        }
+      });
+    }
+  }
+});
+
 // === WHATSAPP BUTTON === //
 document.addEventListener('DOMContentLoaded', function() {
   const whatsappButton = document.getElementById('whatsappButton');

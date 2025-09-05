@@ -1854,6 +1854,29 @@ h2.sobre-heading img.inline-logo {
   transform: translateY(0.3em) !important;
 }
 
+/* === VIDEO BACKGROUND === */
+#heroVideo {
+  transform: translateZ(0); /* Force hardware acceleration */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform;
+}
+
+/* Melhora a performance em dispositivos com GPU fraca */
+@media (max-width: 768px) {
+  #heroVideo {
+    transform: translate3d(0, 0, 0); /* Force GPU layer */
+  }
+}
+
+/* Para monitores com alto DPI */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  #heroVideo {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: optimize-contrast;
+  }
+}
+
 /* === BOTÃO FLUTUANTE WHATSAPP === */
 .whatsapp-float {
   position: fixed;
