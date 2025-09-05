@@ -237,7 +237,7 @@ function openProductModal(category) {
   
   const titles = {
     uniformes: 'Linha Uniformes Profissionais',
-    sports: 'Linha Sports & Atléticas', 
+    sports: 'Linha Esportes & Atléticas', 
     eventos: 'Linha Eventos & Brindes',
     igreja: 'Linha Igreja / Desbravadores'
   };
@@ -529,6 +529,79 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   
   initTiltEffect();
+});
+
+// === WHATSAPP BUTTON === //
+document.addEventListener('DOMContentLoaded', function() {
+  const whatsappButton = document.getElementById('whatsappButton');
+  
+  if (whatsappButton) {
+    // Adiciona animação de entrada após carregamento
+    setTimeout(() => {
+      whatsappButton.style.opacity = '1';
+      whatsappButton.style.transform = 'scale(1)';
+    }, 1500);
+    
+    // Adiciona tooltip hover
+    const link = whatsappButton.querySelector('a');
+    
+    // Tooltip
+    link.addEventListener('mouseenter', function() {
+      if (!document.querySelector('.whatsapp-tooltip')) {
+        const tooltip = document.createElement('div');
+        tooltip.className = 'whatsapp-tooltip';
+        tooltip.textContent = 'Fale conosco!';
+        tooltip.style.cssText = `
+          position: absolute;
+          right: 70px;
+          top: 50%;
+          transform: translateY(-50%);
+          background: #333;
+          color: white;
+          padding: 8px 12px;
+          border-radius: 8px;
+          font-size: 0.85rem;
+          white-space: nowrap;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+          pointer-events: none;
+          z-index: 1001;
+        `;
+        
+        // Seta do tooltip
+        const arrow = document.createElement('div');
+        arrow.style.cssText = `
+          position: absolute;
+          right: -5px;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 0;
+          height: 0;
+          border: 5px solid transparent;
+          border-left-color: #333;
+        `;
+        
+        tooltip.appendChild(arrow);
+        whatsappButton.appendChild(tooltip);
+        
+        setTimeout(() => tooltip.style.opacity = '1', 10);
+      }
+    });
+    
+    link.addEventListener('mouseleave', function() {
+      const tooltip = document.querySelector('.whatsapp-tooltip');
+      if (tooltip) {
+        tooltip.style.opacity = '0';
+        setTimeout(() => tooltip.remove(), 300);
+      }
+    });
+    
+    // Analytics tracking (opcional)
+    link.addEventListener('click', function() {
+      // Aqui você pode adicionar tracking analytics
+      console.log('WhatsApp button clicked');
+    });
+  }
 });
 
 // === FUNÇÕES GLOBAIS === //
