@@ -73,18 +73,25 @@
   </header>
 
   <main id="inicio">
+
   <section class="hero hero--left" aria-label="Apresentação">
-      <div class="hero__bg hero-bg-anim"></div>
-      <div class="hero__overlay hero-gradient-overlay"></div>
-      <div class="container-max hero__content">
-        <h1><span style="animation-delay:.15s">Vista.</span><br><span style="animation-delay:.28s">Divulgue.</span><br><span style="animation-delay:.42s">Impressione.</span></h1>
-        <p style="text-align: left;">Soluções têxteis personalizadas para empresas, eventos e ações esportivas com mais de 20 anos de expertise.</p>
-        <div class="hero-actions">
-          <a href="#orcamento" class="btn btn-primary" style="font-size:.95rem;padding:1rem 2rem;border-radius:.9rem;">Solicitar Orçamento</a>
-          <a href="#produtos" class="btn btn-outline" style="font-size:.95rem;padding:1rem 2rem;border-radius:.9rem;">Ver Produtos</a>
-        </div>
+    <div style="position:absolute;inset:0;width:100vw;height:100%;overflow:hidden;z-index:0;">
+      <picture style="width:100vw;height:100%;display:block;">
+        <source srcset="assets/images/hero-section-banner10.webp" media="(min-width: 769px)" type="image/webp">
+        <source srcset="assets/images/hero-section-banner-mobile.webp" media="(max-width: 768px)" type="image/webp">
+        <img src="assets/images/hero-section-banner10.webp" alt="Banner principal Zaptex" style="width:100vw;height:100%;object-fit:cover;object-position:center center;display:block;" loading="eager" fetchpriority="high" />
+      </picture>
+      <div class="hero__overlay hero-gradient-overlay" style="position:absolute;inset:0;width:100vw;height:100%;background:linear-gradient(180deg,rgba(0,0,0,0.55),rgba(0,0,0,0.92));z-index:1;"></div>
+    </div>
+    <div class="container-max hero__content" style="position:relative;z-index:1;">
+      <h1><span style="animation-delay:.15s">Vista.</span><br><span style="animation-delay:.28s">Divulgue.</span><br><span style="animation-delay:.42s">Impressione.</span></h1>
+      <p style="text-align: left;">Soluções têxteis personalizadas para empresas, eventos e ações esportivas com mais de 20 anos de expertise.</p>
+      <div class="hero-actions">
+        <a href="#orcamento" class="btn btn-primary" style="font-size:.95rem;padding:1rem 2rem;border-radius:.9rem;">Solicitar Orçamento</a>
+        <a href="#produtos" class="btn btn-outline" style="font-size:.95rem;padding:1rem 2rem;border-radius:.9rem;">Ver Produtos</a>
       </div>
-    </section>
+    </div>
+  </section>
 
     <section id="sobre" class="section sobre-section" aria-labelledby="sobre-title">
       <div class="container-max">
@@ -226,8 +233,9 @@
 
     <section id="diferenciais" class="section" aria-labelledby="diff-title" style="position: relative; overflow: hidden;">
       <!-- Video Background -->
-      <video autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
+      <video autoplay muted loop playsinline preload="none" poster="assets/images/hero-section-banner10.webp" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;" loading="lazy">
         <source src="assets/videos/video01.mp4" type="video/mp4">
+        Seu navegador não suporta vídeo HTML5.
       </video>
       
       <!-- Overlay -->
